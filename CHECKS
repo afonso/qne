@@ -1,4 +1,3 @@
-/ Qne
-#/stylesheets/index.css  .body
-#/scripts/index.js       $(function()
-#/images/logo.png
+WAIT=5
+ATTEMPTS=6
+/check.txt simple_check
