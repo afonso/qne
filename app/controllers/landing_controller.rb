@@ -1,6 +1,9 @@
 class LandingController < ApplicationController
   helper_method :resource_name, :resource, :devise_mapping
   def index
+    if current_user
+      redirect_to user_path(current_user)
+    end
   end
 
   def resource_name
