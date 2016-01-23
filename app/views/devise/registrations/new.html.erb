@@ -1,0 +1,20 @@
+<h2>Sign up</h2>
+
+<%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:multipart => true}) do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.text_field :name, required: :true, hide_label: :true, placeholder: "Name" %>
+  <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
+  <%if @validatable %>
+  <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Password", help: "Must be #{@minimum_password_length} characters minimum" %>
+  <% else %>
+  <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Password" %>
+  <% end %>
+  <%= f.password_field :password_confirmation, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Confirm password" %>
+  <%= f.file_field :avatar %>
+  <%= f.hidden_field :avatar_cache %>
+  <%= f.hidden_field :provider %>
+  <%= f.hidden_field :uid %>
+  <%= f.submit "Sign up" %>
+<% end %>
+
+<%= render "devise/shared/links" %>

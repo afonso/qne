@@ -1,0 +1,37 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:multipart => true}) do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.text_field :name, required: :true, hide_label: :true, placeholder: "Name" %>
+  <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
+  <%= f.text_field :birthday, required: :true, hide_label: :true, placeholder: "Nascimento", "data-provide": 'datepicker' %>
+  <%= f.form_group :role, label: { text: "Você é?" } do %>
+    <%= f.radio_button :role, 'student', label: "Estudante", inline: true, checked: true %>
+    <%= f.radio_button :role, 'volunteer', label: "Voluntário", inline: true %>
+    <%= f.radio_button :role, 'employee', label: "Funcionário", inline: true %>
+    <%= f.radio_button :role, 'family', label: "Familiar", inline: true %>
+    <%= f.radio_button :role, 'other', label: "Outros", inline: true %>
+  <% end %>
+  <%= f.form_group :gender, label: { text: "Sexo" } do %>
+    <%= f.radio_button :gender, 'male', label: "Masculino" %>
+    <%= f.radio_button :gender, 'female', label: "Feminino" %>
+  <% end %>
+  <%= f.password_field :current_password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha Atual" %>
+  <%if @validatable %>
+    <%= f.password_field :password, autocomplete: "off", hide_label: :true, placeholder: "Password", help: "Must be #{@minimum_password_length} characters minimum" %>
+  <% else %>
+    <%= f.password_field :password, autocomplete: "off", hide_label: :true, placeholder: "Password" %>
+  <% end %>
+  <%= f.password_field :password_confirmation, autocomplete: "off", hide_label: :true, placeholder: "Confirm password" %>
+  <%= f.file_field :avatar %>
+  <%= f.hidden_field :avatar_cache %>
+  <%= f.hidden_field :provider %>
+  <%= f.hidden_field :uid %>
+  <%= f.submit "Update" %>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>
