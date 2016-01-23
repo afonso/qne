@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_action :ensure_finished_user_profile, unless: :devise_controller?
 
   def after_sign_in_path_for(resource)
     user_path(current_user)
@@ -12,6 +13,7 @@ class ApplicationController < ActionController::Base
   def ensure_finished_user_profile
     if current_user
       unless current_user.profile_finished?
+        flash[:notice] = "Por favor, complete seus dados."
         redirect_to edit_user_registration_path
       end
     end
