@@ -3,9 +3,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
-  has_one :contact
+  has_one :contact, inverse_of: :user
 
   mount_uploader :avatar, AvatarUploader
+
+  def profile_finished?
+    name or birthday ? true : false
+  end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

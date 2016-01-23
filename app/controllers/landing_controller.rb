@@ -1,5 +1,6 @@
 class LandingController < ApplicationController
   helper_method :resource_name, :resource, :devise_mapping
+  before_action :ensure_finished_user_profile
   def index
     if current_user
       redirect_to user_path(current_user)
