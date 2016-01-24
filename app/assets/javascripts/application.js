@@ -16,5 +16,6 @@
 //= require turbolinks
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.js
+//= require maskedinput
 //
 //= require_tree .

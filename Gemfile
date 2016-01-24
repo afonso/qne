@@ -21,6 +21,7 @@ gem 'bootstrap_form'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'bootstrap-datepicker-rails'
+gem 'maskedinput-rails'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
