@@ -7,6 +7,12 @@ class LandingController < ApplicationController
     end
   end
 
+  def choose
+    unless current_user
+      redirect_to root_path
+    end
+  end
+
   def resource_name
     :user
   end
