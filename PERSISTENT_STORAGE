@@ -1,1 +1,1 @@
-/app/public/uploads:/home/dokku/uploads
+/home/dokku/uploads:/app/public/uploads
