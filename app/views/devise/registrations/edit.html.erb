@@ -18,7 +18,7 @@
   <% end %>
   <%= f.password_field :current_password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha Atual" %>
 
-  <span>Se quiser mudar sua senha digite abaixo, deixe em branco para manter sua senha.</span>
+  <span>Se quiser mudar sua senha digite abaixo, deixe em branco para manter a atual.</span>
   <%if @validatable %>
     <%= f.password_field :password, autocomplete: "off", hide_label: :true, placeholder: "Senha", help: "Must be #{@minimum_password_length} characters minimum" %>
   <% else %>
