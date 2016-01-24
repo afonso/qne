@@ -1,5 +1,6 @@
 class LandingController < ApplicationController
   helper_method :resource_name, :resource, :devise_mapping
+  before_action :authenticate_user!, only: [:choose]
   
   def index
     if current_user
@@ -8,9 +9,7 @@ class LandingController < ApplicationController
   end
 
   def choose
-    unless current_user
-      redirect_to root_path
-    end
+    
   end
 
   def resource_name
