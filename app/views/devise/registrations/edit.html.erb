@@ -4,7 +4,7 @@
   <%= devise_error_messages! %>
   <%= f.text_field :name, required: :true, hide_label: :true, placeholder: "Name" %>
   <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
-  <%= f.text_field :birthday, required: :true, hide_label: :true, placeholder: "Nascimento" %>
+  <%= f.text_field :birthday, required: :true, hide_label: :true, placeholder: "Data de nascimento - dd/mm/aaaa" %>
   <%= f.form_group :role, label: { text: "Você é?" } do %>
     <%= f.radio_button :role, 'student', label: "Estudante", checked: true %>
     <%= f.radio_button :role, 'volunteer', label: "Voluntário" %>
@@ -40,6 +40,6 @@
 <%= link_to "Back", :back %>
 <script type="text/javascript">
 jQuery(function($){
-   $("#user_birthday").mask("99/99/9999",{placeholder:"dd/mm/aaaa"});
+   $("#user_birthday").mask("99/99/9999");
 });
 </script>
