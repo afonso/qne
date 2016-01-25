@@ -51,4 +51,8 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  def persisted?
+    false
+  end
 end
