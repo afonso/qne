@@ -28,5 +28,7 @@ pt-BR:
           attributes:
             email:
               taken: "Este email já foi cadastrado"
+            password_confirmation:
+              confirmation: "A confirmação da senha não é igual a senha"
       messages:
         record_invalid: "Registro inválido"

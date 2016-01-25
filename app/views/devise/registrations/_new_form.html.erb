@@ -1,0 +1,24 @@
+<%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:multipart => true}) do |f| %>
+  <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
+  <%= f.form_group :role, required: :true, label: { text: "Você é?" } do %>
+    <%= f.radio_button :role, 'student', label: "Estudante", inline: true , checked: true %>
+    <%= f.radio_button :role, 'volunteer', label: "Voluntário", inline: true %>
+    <%= f.radio_button :role, 'employee', label: "Funcionário", inline: true %>
+    <%= f.radio_button :role, 'family', label: "Familiar", inline: true %>
+    <%= f.radio_button :role, 'other', label: "Outros", inline: true %>
+  <% end %>
+  <% if params["provider"] %>
+  <div class="alert alert-danger">Defina uma senha para sua conta, por favor.</div>
+  <% end %>
+  <%if @validatable %>
+  <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha", help: "Precisa ter no mínimo #{@minimum_password_length} caracteres" %>
+  <% else %>
+  <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha" %>
+  <% end %>
+  <%= f.password_field :password_confirmation, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Confirme sua senha" %>
+  <%= f.file_field :avatar, label: "Seu avatar" %>
+  <%= f.hidden_field :avatar_cache %>
+  <%= f.hidden_field :provider %>
+  <%= f.hidden_field :uid %>
+  <%= f.submit "Sign up" %>
+<% end %>

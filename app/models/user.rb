@@ -34,7 +34,6 @@ class User < ActiveRecord::Base
          user.name = auth.info.name
          user.email = auth.info.email
          user.remote_avatar_url = auth.info.image.gsub('http:','https:')
-         user.save!
       end
     end
     #require 'pry'; binding.pry

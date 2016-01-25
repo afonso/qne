@@ -1,26 +1,2 @@
-<h2>Sign up</h2>
-
-<%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:multipart => true}) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
-  <%= f.form_group :role, required: :true, label: { text: "Você é?" } do %>
-    <%= f.radio_button :role, 'student', label: "Estudante", inline: true , checked: true %>
-    <%= f.radio_button :role, 'volunteer', label: "Voluntário", inline: true %>
-    <%= f.radio_button :role, 'employee', label: "Funcionário", inline: true %>
-    <%= f.radio_button :role, 'family', label: "Familiar", inline: true %>
-    <%= f.radio_button :role, 'other', label: "Outros", inline: true %>
-  <% end %>
-  Defina uma senha para sua conta, por favor.
-  <%if @validatable %>
-  <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Password", help: "Must be #{@minimum_password_length} characters minimum" %>
-  <% else %>
-  <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Password" %>
-  <% end %>
-  <%= f.password_field :password_confirmation, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Confirm password" %>
-  <%= f.file_field :avatar %>
-  <%= f.hidden_field :avatar_cache %>
-  <%= f.hidden_field :provider %>
-  <%= f.hidden_field :uid %>
-  <%= f.submit "Sign up" %>
-<% end %>
+<%= render :partial => 'new_form' %>
 <%= render "devise/shared/links" %>
