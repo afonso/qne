@@ -28,12 +28,11 @@ class User < ActiveRecord::Base
       return_user.provider = auth.provider
       return_user.uid = auth.uid
     else
-      return_user = self.create do |user|
-         user.provider = auth.provider
-         user.uid = auth.uid
-         user.name = auth.info.name
-         user.email = auth.info.email
-         user.remote_avatar_url = auth.info.image.gsub('http:','https:')
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        user.email = auth.info.email
+        user.password = Devise.friendly_token[0,20]
+        user.name = auth.info.name
+        user.remote_avatar_url = auth.info.image
       end
     end
     #require 'pry'; binding.pry

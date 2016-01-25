@@ -7,9 +7,6 @@
     <%= f.radio_button :role, 'family', label: "Familiar", inline: true %>
     <%= f.radio_button :role, 'other', label: "Outros", inline: true %>
   <% end %>
-  <% if params["provider"] %>
-  <div class="alert alert-danger">Defina uma senha para sua conta, por favor.</div>
-  <% end %>
   <%if @validatable %>
   <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha", help: "Precisa ter no mínimo #{@minimum_password_length} caracteres" %>
   <% else %>
