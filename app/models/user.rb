@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  def is_facebooked?
+    uid and provider ? true : false
+  end
+
   def profile_finished?
     #require 'pry'; binding.pry
     name and birthday ? true : false
@@ -28,7 +32,7 @@ class User < ActiveRecord::Base
       return_user.provider = auth.provider
       return_user.uid = auth.uid
     else
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      self.where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.email = auth.info.email
         user.password = Devise.friendly_token[0,20]
         user.name = auth.info.name
@@ -50,9 +54,5 @@ class User < ActiveRecord::Base
         user.uid = data["uid"] if user.uid.blank?
       end
     end
-  end
-
-  def persisted?
-    false
   end
 end

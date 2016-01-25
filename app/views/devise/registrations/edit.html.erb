@@ -9,7 +9,9 @@
     <%= f.radio_button :gender, 'male', label: "Masculino", inline: true %>
     <%= f.radio_button :gender, 'female', label: "Feminino", inline: true %>
   <% end %>
-  <%= f.password_field :current_password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha Atual" %>
+  <% unless current_user.is_facebooked? %>
+    <%= f.password_field :current_password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha Atual" %>
+  <% end %>
 
   <span>Se quiser mudar sua senha digite abaixo, deixe em branco para manter a atual.</span>
   <%if @validatable %>

@@ -30,5 +30,7 @@ pt-BR:
               taken: "Este email já foi cadastrado"
             password_confirmation:
               confirmation: "A confirmação da senha não é igual a senha"
+            current_password:
+              invalid: "Senha está incorreta"
       messages:
         record_invalid: "Registro inválido"
