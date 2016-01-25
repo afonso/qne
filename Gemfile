@@ -32,6 +32,7 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'pry-byebug'
   gem 'quiet_assets'
+  gem 'puma'
 end
 
 group :production do

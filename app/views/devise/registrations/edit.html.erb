@@ -4,14 +4,7 @@
   <%= devise_error_messages! %>
   <%= f.text_field :name, required: :true, hide_label: :true, placeholder: "Name" %>
   <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
-  <%= f.text_field :birthday, required: :true, hide_label: :true, placeholder: "Data de nascimento - dd/mm/aaaa" %>
-  <%= f.form_group :role, label: { text: "Você é?" } do %>
-    <%= f.radio_button :role, 'student', label: "Estudante", checked: true %>
-    <%= f.radio_button :role, 'volunteer', label: "Voluntário" %>
-    <%= f.radio_button :role, 'employee', label: "Funcionário" %>
-    <%= f.radio_button :role, 'family', label: "Familiar" %>
-    <%= f.radio_button :role, 'other', label: "Outros" %>
-  <% end %>
+  <%= f.text_field :birthday, required: :true, hide_label: :true, placeholder: "Data de nascimento" %>
   <%= f.form_group :gender, label: { text: "Sexo" } do %>
     <%= f.radio_button :gender, 'male', label: "Masculino", inline: true %>
     <%= f.radio_button :gender, 'female', label: "Feminino", inline: true %>
@@ -26,20 +19,14 @@
   <% end %>
   <%= f.password_field :password_confirmation, autocomplete: "off", hide_label: :true, placeholder: "Confirme" %>
   <%= image_tag current_user.avatar.normal %>
-  <%= f.file_field :avatar %>
+  <%= f.file_field :avatar, label: "Seu avatar" %>
   <%= f.hidden_field :avatar_cache %>
   <%= f.hidden_field :provider %>
   <%= f.hidden_field :uid %>
-  <%= f.submit "Atualizar" %>
+  <div class="form-group">
+    <%= f.submit "Atualizar", class: "btn btn-success" %>
+    <%= link_to "Voltar", :back, class: "btn btn-default" %>
+  </div>
 <% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
-<script type="text/javascript">
-jQuery(function($){
-   $("#user_birthday").mask("99/99/9999");
-});
-</script>
+<%= button_to "Cancelar minha conta!", registration_path(resource_name), data: { confirm: "Tem certeza que deseja cancelar sua conta?" }, method: :delete, class: "btn btn-danger" %>

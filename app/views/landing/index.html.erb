@@ -11,6 +11,13 @@ cadastro
 <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:multipart => true}) do |f| %>
   <%= devise_error_messages! %>
   <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
+  <%= f.form_group :role, required: :true, label: { text: "Você é?" } do %>
+    <%= f.radio_button :role, 'student', label: "Estudante", inline: true , checked: true %>
+    <%= f.radio_button :role, 'volunteer', label: "Voluntário", inline: true %>
+    <%= f.radio_button :role, 'employee', label: "Funcionário", inline: true %>
+    <%= f.radio_button :role, 'family', label: "Familiar", inline: true %>
+    <%= f.radio_button :role, 'other', label: "Outros", inline: true %>
+  <% end %>
   <%if @validatable %>
   <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Password", help: "Must be #{@minimum_password_length} characters minimum" %>
   <% else %>
