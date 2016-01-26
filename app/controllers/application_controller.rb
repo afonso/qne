@@ -53,8 +53,7 @@ class ApplicationController < ActionController::Base
                                                                   :gender,
                                                                   :email, 
                                                                   :password,
-                                                                  :password_confirmation, 
-                                                                  :current_password, 
+                                                                  :password_confirmation,
                                                                   :avatar, 
                                                                   :avatar_cache
                                                                   )}

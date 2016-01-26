@@ -32,5 +32,8 @@ pt-BR:
               confirmation: "A confirmação da senha não é igual a senha"
             current_password:
               invalid: "Senha está incorreta"
+            password:
+              too_short: "Senha curta demais, digite pelo menos 8 caracteres"
+              blank: "A senha não pode ficar em branco"
       messages:
         record_invalid: "Registro inválido"

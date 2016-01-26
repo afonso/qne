@@ -15,7 +15,5 @@
   <%= f.password_field :password_confirmation, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Confirme sua senha" %>
   <%= f.file_field :avatar, label: "Seu avatar" %>
   <%= f.hidden_field :avatar_cache %>
-  <%= f.hidden_field :provider %>
-  <%= f.hidden_field :uid %>
   <%= f.submit "Sign up" %>
 <% end %>

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
-  def is_facebooked?
+  def is_oauth?
     uid and provider ? true : false
   end
 
@@ -26,13 +26,23 @@ class User < ActiveRecord::Base
     end
   end
 
+  def update_with_password(params, *options)
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+    end
+    result = update_attributes(params, *options)   
+    clean_up_passwords
+    result
+  end
+
   def self.from_omniauth(auth)
     if self.where(email: auth.info.email).exists?
       return_user = self.where(email: auth.info.email).first
       return_user.provider = auth.provider
       return_user.uid = auth.uid
     else
-      self.where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      return_user = self.where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.email = auth.info.email
         user.password = Devise.friendly_token[0,20]
         user.name = auth.info.name
