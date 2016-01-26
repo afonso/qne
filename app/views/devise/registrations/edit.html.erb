@@ -3,8 +3,8 @@
 <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:multipart => true}) do |f| %>
   <div class="row">
     <div class="col-xs-4 col-sm-2 col-md-2">
-      <span class="btn btn-default btn-file">
-        <%= image_tag current_user.avatar.normal, class: "avatar-thumb" %>
+      <span class="btn btn-file">
+        <%= image_tag current_user.avatar.normal, class: "avatar-thumb img-thumbnail" %>
         <%= f.file_field :avatar, hide_label: true %>
         <small id="notification">Alterar avatar</small>
       </span>
@@ -37,23 +37,3 @@
   </div>
 <% end %>
 <%= button_to "Cancelar minha conta!", registration_path(resource_name), data: { confirm: "Tem certeza que deseja cancelar sua conta?" }, method: :delete, class: "btn btn-danger btn-xs pull-right" %>
-
-<script type="text/javascript">
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('.avatar-thumb').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-$(function() {
-  $("#user_avatar").change(function (){
-    readURL(this);
-    $("#notification").html("Avatar selecionado");
-  });
-});
-</script>

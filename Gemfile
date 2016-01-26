@@ -15,13 +15,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth-facebook'
-gem "less-rails"
-gem "twitter-bootstrap-rails"
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
 gem 'bootstrap_form'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'bootstrap-datepicker-rails'
 gem 'maskedinput-rails'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'

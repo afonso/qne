@@ -81,18 +81,33 @@
 
   </body>
 <script type="text/javascript">
-jQuery(function($){
-   $("#user_birthday").mask("99/99/9999");
-   $('#user_birthday').datepicker({
-        format: "dd/mm/yyyy",
-        language: "pt-BR"
-    });
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
-   $("#information_expected_finish").mask("99/99/9999");
-   $('#information_expected_finish').datepicker({
-        format: "dd/mm/yyyy",
-        language: "pt-BR"
-    });
+        reader.onload = function (e) {
+            $('.avatar-thumb').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+jQuery(function($){
+  $("#user_avatar").change(function (){
+    readURL(this);
+    $("#notification").html("Avatar selecionado");
+  });
+  $("#user_birthday").mask("99/99/9999");
+  $('#user_birthday').datepicker({
+       format: "dd/mm/yyyy",
+       language: "pt-BR"
+   });
+
+ $("#information_expected_finish").mask("99/99/9999");
+ $('#information_expected_finish').datepicker({
+      format: "dd/mm/yyyy",
+      language: "pt-BR"
+  });
 });
 </script>
 </html>

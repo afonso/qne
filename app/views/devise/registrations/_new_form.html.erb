@@ -1,19 +1,45 @@
 <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:multipart => true}) do |f| %>
-  <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
-  <%= f.form_group :role, required: :true, label: { text: "Você é?" } do %>
-    <%= f.radio_button :role, 'student', label: "Estudante", inline: true , checked: true %>
-    <%= f.radio_button :role, 'volunteer', label: "Voluntário", inline: true %>
-    <%= f.radio_button :role, 'employee', label: "Funcionário", inline: true %>
-    <%= f.radio_button :role, 'family', label: "Familiar", inline: true %>
-    <%= f.radio_button :role, 'other', label: "Outros", inline: true %>
-  <% end %>
-  <%if @validatable %>
-  <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha", help: "Precisa ter no mínimo #{@minimum_password_length} caracteres" %>
-  <% else %>
-  <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha" %>
-  <% end %>
-  <%= f.password_field :password_confirmation, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Confirme sua senha" %>
-  <%= f.file_field :avatar, label: "Seu avatar" %>
-  <%= f.hidden_field :avatar_cache %>
-  <%= f.submit "Sign up" %>
+  <div class="row">
+    <div class="col-xs-4 col-sm-2 col-md-2">
+      <span class="btn btn-file">
+        <% if current_user %>
+          <%= image_tag current_user.avatar.normal, class: "avatar-thumb img-thumbnail" %>
+        <% else %>
+          <%= image_tag "normal_avatar.jpg", class: "avatar-thumb img-thumbnail" %>
+        <% end %>
+        <%= f.file_field :avatar, hide_label: true %>
+        <small id="notification">Alterar avatar</small>
+      </span>
+    </div>
+    <div class="col-xs-8 col-sm-10 col-md-10">
+      <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
+      <%if @validatable %>
+      <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha", help: "Precisa ter no mínimo #{@minimum_password_length} caracteres" %>
+      <% else %>
+      <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha" %>
+      <% end %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Confirme sua senha" %>
+
+      <%= f.form_group :role, required: :true, label: { text: "Você é?" } do %>
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-default active">
+        <%= f.radio_button :role, 'student', inline: true , checked: true, autocomplete: "off" %>
+        <%= image_tag "student.png" %>
+        Estudante
+        </label>
+        <label class="btn btn-default">
+        <%= f.radio_button :role, 'volunteer', inline: true, autocomplete: "off" %>
+        <%= image_tag "volunteer.png" %>
+        Voluntário
+        </label>
+        <label class="btn btn-default">
+        <%= f.radio_button :role, 'other', inline: true, autocomplete: "off" %>
+        <%= image_tag "other.png" %>
+        Outros
+        </label>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <%= f.submit "Cadastrar", class: "btn btn-success" %>
 <% end %>
