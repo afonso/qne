@@ -23,9 +23,12 @@ gem 'mini_magick'
 gem 'bootstrap-datepicker-rails'
 gem 'maskedinput-rails'
 gem 'font-awesome-rails'
+gem 'jquery-ui-rails'
+gem 'gmaps-autocomplete-rails'
+gem 'gmaps4rails'
+gem 'underscore-rails'
 
 group :development, :test do
-  gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'pry-rails'
   gem 'pry'
@@ -34,6 +37,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'quiet_assets'
   gem 'puma'
+  gem 'awesome_print', require: 'ap'
 end
 
 group :production do

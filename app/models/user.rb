@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
 
   has_one :information, inverse_of: :user, dependent: :delete
 
+  has_many :groups
+  has_many :demands, through: :groups
+
   mount_uploader :avatar, AvatarUploader
 
   def is_oauth?
@@ -13,7 +16,7 @@ class User < ActiveRecord::Base
 
   def profile_finished?
     #require 'pry'; binding.pry
-    name and birthday ? true : false
+    name and birthday and role ? true : false
   end
 
   def infos_finished?
@@ -49,7 +52,6 @@ class User < ActiveRecord::Base
         user.remote_avatar_url = auth.info.image
       end
     end
-    #require 'pry'; binding.pry
     return_user
   end
 

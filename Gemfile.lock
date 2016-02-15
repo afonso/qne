@@ -40,6 +40,7 @@ GEM
     autoprefixer-rails (6.3.1)
       execjs
       json
+    awesome_print (1.6.1)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -82,6 +83,9 @@ GEM
       railties (>= 3.2, < 5.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    gmaps-autocomplete-rails (0.1.4)
+      rails (>= 3.1.0)
+    gmaps4rails (2.1.2)
     hashie (3.4.3)
     i18n (0.7.0)
     jbuilder (2.4.0)
@@ -91,6 +95,8 @@ GEM
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.5)
+      railties (>= 3.2.16)
     json (1.8.3)
     jwt (1.5.2)
     kgio (2.10.0)
@@ -226,23 +232,20 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    underscore-rails (1.8.3)
     unicorn (5.0.1)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
     warden (1.2.4)
       rack (>= 1.0)
-    web-console (2.2.1)
-      activemodel (>= 4.0)
-      binding_of_caller (>= 0.7.2)
-      railties (>= 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
     yard (0.8.7.6)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   bcrypt (~> 3.1.7)
   bootstrap-datepicker-rails
   bootstrap-sass (~> 3.3.6)
@@ -251,8 +254,11 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   font-awesome-rails
+  gmaps-autocomplete-rails
+  gmaps4rails
   jbuilder (~> 2.0)
   jquery-rails
+  jquery-ui-rails
   less-rails
   maskedinput-rails
   mini_magick
@@ -274,8 +280,8 @@ DEPENDENCIES
   turbolinks
   twitter-bootstrap-rails
   uglifier (>= 1.3.0)
+  underscore-rails
   unicorn
-  web-console (~> 2.0)
 
 BUNDLED WITH
    1.11.2

@@ -12,6 +12,7 @@
  *
  *= require rails_bootstrap_forms
  *= require bootstrap-datepicker3
+ *= require jquery-ui
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -46,4 +47,53 @@
 .avatar-thumb {
     width: 100px;
     height: 100px;
+}
+
+.navbar-bottom {
+  margin-top: 20px;
+}
+
+
+h2 {
+    padding-bottom: 6px;
+    color: #666;
+    border-bottom: 1px solid #ccc;
+}
+
+.menu-imaged {
+    height: 300px;
+    background: url("topo.jpg") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin-top: 4px;
+    margin-bottom: 20px;
+}
+
+.fullh {
+    height:100%;
+    min-height:100%;
+}
+
+.navbar-login {
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session {
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size {
+    font-size: 87px;
+}
+
+#gmaps-canvas {
+    width: 300px; 
+    height: 300px;  
+    border: solid 1px;
 }

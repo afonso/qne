@@ -1,19 +1,30 @@
-<h2>Login</h2>
 <div class="row">
-  <div class="col-xs-4 col-sm-5 col-md-5">
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+    <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-social btn-lg btn-facebook" do %>
+      <%= fa_icon 'facebook' %> Entrar usando Facebook
+    <% end %>
+    Se preferir, faça o login ou o cadastro abaixo.
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col-md-4">
+  <h2>Login</h2>
     <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
-      <%= f.password_field :password, required: :true, hide_label: :true, placeholder: "Password" %>
+      <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email", class: "input-lg" %>
+      <%= f.password_field :password, required: :true, hide_label: :true, placeholder: "Password", class: "input-lg" %>
       <%= f.check_box :remember_me, label: "Dispositivo pessoal?" %>
       <%= f.submit "Entrar" %>
       <%= link_to "Esqueceu sua senha?", new_password_path(:user) %>
     <% end %>
   </div>
-  <div class="col-xs-4 col-sm-5 col-md-5">
-    <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-block btn-social btn-lg btn-facebook" do %>
-      <%= fa_icon 'facebook' %> Entrar usando Facebook
-    <% end %>
+
+  <div class="col-md-8">
+  <h2>Cadastro</h2>
+    <%= render partial: 'devise/registrations/new_form' %>
   </div>
 </div>
-<h2>Cadastro</h2>
-<%= render partial: 'devise/registrations/new_form' %>

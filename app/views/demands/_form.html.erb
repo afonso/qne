@@ -1,0 +1,67 @@
+<%= form_for @demand, :html => { :class => "form-horizontal demand" } do |f| %>
+
+  <div class="form-group">
+    <%= f.label "Quer aprender o que?", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <% @accepted_demands.each do |demand| %>
+        <label>
+          <%= f.radio_button :title, demand.title %> <%= demand.title %>
+        </label>
+        <br />
+      <% end %>
+      <% unless @demand.new_record? %>
+        <label>
+          <%= f.radio_button :title, @demand.title %> <%= @demand.title %>
+        </label>
+      <% end %> 
+      <br />
+      <label>
+        <%= f.radio_button :title, '' %> 
+        Outro? 
+        <%= text_field_tag "demand[title_other]" %>
+      </label>
+    </div>
+    <%=f.error_span(:title) %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Observações", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :observation, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:observation) %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Periodo", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <div class="checkbox">
+        <label>
+          <%= f.radio_button :period, 'morning', inline: true , checked: true %> De manhã
+        </label>
+        <label>
+          <%= f.radio_button :period, 'afternoon', inline: true %> À tarde
+        </label>
+        <label>
+          <%= f.radio_button :period, 'night', inline: true %> À noite
+        </label>
+      </div>
+    </div>
+    <%=f.error_span(:period) %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Onde?", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.select :school_id, options_for_select(@schools.collect { |school|
+      [school.name.titleize, school.id] }, (@demand.school.id if @demand.school)), {}, { id: 'school_select', required: :true, class: 'form-control' } %>
+    </div>
+    <%=f.error_span(:school_id) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit "Enviar", :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                demands_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

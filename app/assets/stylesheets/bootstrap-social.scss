@@ -32,8 +32,9 @@ $bs-height-xs:   (floor($font-size-small * 1.2) + $padding-small-vertical + 1);
   }
   &.btn-lg {
     padding-left: ($bs-height-lg + $padding-large-horizontal);
+    font-size: 1.8em;
     > :first-child {
-      line-height: $bs-height-lg;
+      line-height: $bs-height-lg + 24;
       width: $bs-height-lg;
       font-size: 1.8em;
     }

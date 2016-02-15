@@ -1,45 +1,30 @@
 <%= form_for @information, :html => { :class => "form-horizontal information" } do |f| %>
-
-  <% if @information.errors.any? %>
-    <div id="error_expl" class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@information.errors.count, "error") %> prohibited this information from being saved:</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-        <% @information.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
-
-  <%= f.hidden_field :user_id, value: current_user.id %>
   <div class="form-group">
-    <%= f.label :city, :class => 'control-label col-lg-2' %>
+    <%= f.label "Estado", :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :city, required: :true, :class => 'form-control' %>
+      <%= f.select :state_id, options_for_select(@states.collect { |state|
+      [state.name.titleize, state.id] }, (current_user.information.state_id if current_user.information)), {}, { id: 'states_select', required: :true, class: 'form-control' } %>
     </div>
-    <%=f.error_span(:city) %>
+    <%=f.error_span(:state_id) %>
   </div>
   <div class="form-group">
-    <%= f.label :state, :class => 'control-label col-lg-2' %>
+    <%= f.label "Cidade", :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :state, required: :true, :class => 'form-control' %>
+      <%= f.select :city_id, options_for_select(@cities.collect { |city|
+      [city.name.titleize, city.id] }, (current_user.information.city_id if current_user.information)), {}, { id: 'cities_select', required: :true, class: 'form-control' } %>
     </div>
-    <%=f.error_span(:state) %>
+    <%=f.error_span(:city_id) %>
   </div>
   <% if current_user.role == "student" %>
   <div class="form-group">
-    <%= f.label :school, :class => 'control-label col-lg-2' %>
+    <%= f.label "Qual sua Escola?", :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <%= f.text_field :school, required: :true, :class => 'form-control' %>
     </div>
     <%=f.error_span(:school) %>
   </div>
   <div class="form-group">
-    <%= f.label :expected_finish, :class => 'control-label col-lg-2' %>
+    <%= f.label "Quando irá conluir o ensino médio?", :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <%= f.text_field :expected_finish, required: :true, :class => 'form-control' %>
     </div>
@@ -47,14 +32,14 @@
   </div>
   <% else %>
   <div class="form-group">
-    <%= f.label :work_at, :class => 'control-label col-lg-2' %>
+    <%= f.label "Onde trabalha?", :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <%= f.text_field :work_at, :class => 'form-control' %>
     </div>
     <%=f.error_span(:work_at) %>
   </div>
   <div class="form-group">
-    <%= f.label :occupation, :class => 'control-label col-lg-2' %>
+    <%= f.label "Ocupação/Profissão", :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <%= f.text_field :occupation, :class => 'form-control' %>
     </div>
@@ -63,9 +48,8 @@
   <% end %>
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                information_index_path, :class => 'btn btn-default' %>
+      <%= f.submit "Atualizar", class: "btn btn-success" %>
+      <%= link_to "Cancelar", root_path, class: "btn btn-default" %>
     </div>
   </div>
 

@@ -1,0 +1,40 @@
+<ul class="btn btn-default list-inline">
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <strong><%= current_user.name.split.first.camelize %></strong>
+        <span class="glyphicon glyphicon-chevron-down"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <div class="navbar-login">
+          <div class="row">
+            <div class="col-lg-4">
+              <p class="text-center">
+                <span><%= image_tag current_user.avatar.normal %></span>
+              </p>
+            </div>
+            <div class="col-lg-8">
+              <p class="text-left"><strong><%= current_user.name.camelize %></strong></p>
+              <p class="text-left">
+                <%= link_to "Atualizar Perfil", edit_user_registration_path, class: "btn btn-primary btn-block btn-sm" %>
+                <%= link_to "Atualizar Informações", information_edit_path, class: "btn btn-primary btn-block btn-sm" %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <div class="navbar-login navbar-login-session">
+          <div class="row">
+            <div class="col-lg-12">
+              <p>
+                <%= link_to "Sair", destroy_user_session_path, :method => :delete, class: "btn btn-danger btn-block" %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>

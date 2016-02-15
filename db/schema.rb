@@ -11,15 +11,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160124215648) do
+ActiveRecord::Schema.define(version: 20160213182102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "cities", force: :cascade do |t|
+    t.integer  "state_id"
+    t.boolean  "capital"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "cities", ["state_id"], name: "index_cities_on_state_id", using: :btree
+
+  create_table "demands", force: :cascade do |t|
+    t.string   "title"
+    t.string   "observation"
+    t.string   "period"
+    t.date     "start_at"
+    t.integer  "how_many"
+    t.string   "status"
+    t.integer  "accepted_by"
+    t.integer  "created_by"
+    t.integer  "school_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "demands", ["school_id"], name: "index_demands_on_school_id", using: :btree
+
+  create_table "groups", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "demand_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "groups", ["demand_id"], name: "index_groups_on_demand_id", using: :btree
+  add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
+
   create_table "information", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "city"
-    t.string   "state"
+    t.integer  "city_id"
+    t.integer  "state_id"
     t.string   "school"
     t.date     "expected_finish"
     t.string   "work_at"
@@ -28,7 +64,32 @@ ActiveRecord::Schema.define(version: 20160124215648) do
     t.datetime "updated_at",      null: false
   end
 
+  add_index "information", ["city_id"], name: "index_information_on_city_id", using: :btree
+  add_index "information", ["state_id"], name: "index_information_on_state_id", using: :btree
   add_index "information", ["user_id"], name: "index_information_on_user_id", using: :btree
+
+  create_table "schools", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "lati"
+    t.string   "longi"
+    t.integer  "state_id"
+    t.integer  "city_id"
+    t.string   "neighborhood"
+    t.string   "cep"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "schools", ["city_id"], name: "index_schools_on_city_id", using: :btree
+  add_index "schools", ["state_id"], name: "index_schools_on_state_id", using: :btree
+
+  create_table "states", force: :cascade do |t|
+    t.string   "acronym"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -55,5 +116,13 @@ ActiveRecord::Schema.define(version: 20160124215648) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "cities", "states"
+  add_foreign_key "demands", "schools"
+  add_foreign_key "groups", "demands"
+  add_foreign_key "groups", "users"
+  add_foreign_key "information", "cities"
+  add_foreign_key "information", "states"
   add_foreign_key "information", "users"
+  add_foreign_key "schools", "cities"
+  add_foreign_key "schools", "states"
 end

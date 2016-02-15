@@ -11,11 +11,15 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.js
 //= require maskedinput
+//= require gmaps-auto-complete
+//= require underscore
+//= require gmaps/google
 //
 //= require_tree .

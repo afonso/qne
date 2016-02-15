@@ -1,39 +1,61 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Editar</h2>
 
 <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:multipart => true}) do |f| %>
   <div class="row">
-    <div class="col-xs-4 col-sm-2 col-md-2">
+    <div class="col-md-2">
       <span class="btn btn-file">
         <%= image_tag current_user.avatar.normal, class: "avatar-thumb img-thumbnail" %>
         <%= f.file_field :avatar, hide_label: true %>
         <small id="notification">Alterar avatar</small>
       </span>
     </div>
-    <div class="col-xs-8 col-sm-10 col-md-10">
+    <div class="col-md-10">
       <%= f.text_field :name, required: :true, hide_label: :true, placeholder: "Name" %>
       <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
       <%= f.text_field :birthday, required: :true, hide_label: :true, placeholder: "Data de nascimento" %>    
     </div>
-  </div>
-
-  <div class="col-sm-offset-2">
-  <%= f.form_group :gender, label: { text: "Sexo" } do %>
-    <%= f.radio_button :gender, 'male', label: "Masculino", inline: true %>
-    <%= f.radio_button :gender, 'female', label: "Feminino", inline: true %>
-  <% end %>
-  </div>
-  
-  <span>Se quiser mudar sua senha digite abaixo, deixe em branco para manter a atual.</span>
-  <%if @validatable %>
-    <%= f.password_field :password, autocomplete: "off", hide_label: :true, placeholder: "Senha", help: "Must be #{@minimum_password_length} characters minimum" %>
-  <% else %>
-    <%= f.password_field :password, autocomplete: "off", hide_label: :true, placeholder: "Senha" %>
-  <% end %>
-  <%= f.password_field :password_confirmation, autocomplete: "off", hide_label: :true, placeholder: "Confirme" %>
-  <%= f.hidden_field :avatar_cache %>
-  <div class="form-group">
-    <%= f.submit "Atualizar", class: "btn btn-success" %>
-    <%= link_to "Voltar", :back, class: "btn btn-default" %>
+    <div class="col-md-10 col-md-offset-2">
+      <%= f.form_group :gender, label: { text: "Sexo" } do %>
+        <%= f.radio_button :gender, 'male', label: "Masculino", inline: true %>
+        <%= f.radio_button :gender, 'female', label: "Feminino", inline: true %>
+      <% end %>
+    </div>
+    <% unless current_user.role %>
+    <div class="col-md-10 col-md-offset-2">
+      <%= f.form_group :role, required: :true, label: { text: "Você é?" } do %>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-default active">
+          <%= f.radio_button :role, 'student', inline: true , checked: true, autocomplete: "off" %>
+          <%= image_tag "student.png" %>
+          Estudante
+          </label>
+          <label class="btn btn-default">
+          <%= f.radio_button :role, 'volunteer', inline: true, autocomplete: "off" %>
+          <%= image_tag "volunteer.png" %>
+          Voluntário
+          </label>
+          <label class="btn btn-default">
+          <%= f.radio_button :role, 'other', inline: true, autocomplete: "off" %>
+          <%= image_tag "other.png" %>
+          Outros
+          </label>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+    <span>Se quiser mudar sua senha digite abaixo, deixe em branco para manter a atual.</span>
+    <% if @validatable %>
+      <%= f.password_field :password, autocomplete: "off", hide_label: :true, placeholder: "Senha", help: "Must be #{@minimum_password_length} characters minimum" %>
+    <% else %>
+      <%= f.password_field :password, autocomplete: "off", hide_label: :true, placeholder: "Senha" %>
+    <% end %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", hide_label: :true, placeholder: "Confirme" %>
+    <%= f.hidden_field :avatar_cache %>
+    <div class="form-group">
+      <%= f.submit "Atualizar", class: "btn btn-success" %>
+      <%= link_to "Cancelar", root_path, class: "btn btn-default" %>
+    </div>
   </div>
 <% end %>
+
 <%= button_to "Cancelar minha conta!", registration_path(resource_name), data: { confirm: "Tem certeza que deseja cancelar sua conta?" }, method: :delete, class: "btn btn-danger btn-xs pull-right" %>
