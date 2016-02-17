@@ -62,7 +62,7 @@ h2 {
 
 .menu-imaged {
     height: 300px;
-    background: url("topo.jpg") no-repeat center center; 
+    background: asset-data-url("topo.jpg") no-repeat center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
