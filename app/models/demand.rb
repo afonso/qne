@@ -9,7 +9,7 @@ class Demand < ActiveRecord::Base
     "#{title} - #{I18n.t(period)}"
   end
 
-  def created_by
-    User.find(self.created_by)
+  def owner
+    User.find(created_by)
   end
 end

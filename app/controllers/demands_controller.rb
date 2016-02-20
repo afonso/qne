@@ -58,6 +58,10 @@ class DemandsController < ApplicationController
 
     respond_to do |format|
       if @demand.save
+        @group = Group.new(demand_id: @demand.id)
+        @group.user_id = @demand.created_by
+        @group.save
+        
         format.html { redirect_to success_demands_path, notice: 'Demand was successfully created.' }
         format.json { render :show, status: :created, location: @demand }
       else
