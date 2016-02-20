@@ -57,6 +57,21 @@
   </div>
 
   <div class="form-group">
+    <%= f.label "Pode ser outro lugar? (se a escola não aceitar)", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <div class="checkbox">
+        <label>
+          <%= f.radio_button :other_place, true, inline: true , checked: true %> Sim
+        </label>
+        <label>
+          <%= f.radio_button :other_place, true, inline: true %> Não
+        </label>
+      </div>
+    </div>
+    <%=f.error_span(:other_place) %>
+  </div>
+
+  <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit "Enviar", :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

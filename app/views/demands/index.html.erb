@@ -10,7 +10,6 @@
       <th>Obs</th>
       <th>Periodo</th>
       <th>Inicio em</th>
-      <th>Quantas vezes?</th>
       <th>Status</th>
       <th>Aceito por</th>
       <th>Criado por</th>
@@ -27,13 +26,15 @@
         <td><%= demand.observation %></td>
         <td><%= demand.period %></td>
         <td><%= demand.start_at %></td>
-        <td><%= demand.how_many %></td>
         <td><%= demand.status %></td>
         <td><%= demand.accepted_by %></td>
         <td><%= demand.created_by %></td>
         <td><%= demand.school.name %></td>
         <td><%= demand.created_at %></td>
         <td>
+          <%= link_to "Participar",
+                      add_demands_path(demand_id: demand.id),
+                      :class => 'btn btn-xs btn-success' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_demand_path(demand), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

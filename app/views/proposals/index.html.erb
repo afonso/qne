@@ -1,0 +1,54 @@
+<%- model_class = Proposal -%>
+<div class="page-header">
+  <h1>Propostas</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:demand_id) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%= model_class.human_attribute_name(:sunday) %></th>
+      <th><%= model_class.human_attribute_name(:monday) %></th>
+      <th><%= model_class.human_attribute_name(:tuesday) %></th>
+      <th><%= model_class.human_attribute_name(:wednesday) %></th>
+      <th><%= model_class.human_attribute_name(:thursday) %></th>
+      <th><%= model_class.human_attribute_name(:friday) %></th>
+      <th><%= model_class.human_attribute_name(:saturday) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @proposals.each do |proposal| %>
+      <tr>
+        <td><%= link_to proposal.id, proposal_path(proposal) %></td>
+        <td><%= proposal.user_id %></td>
+        <td><%= proposal.demand_id %></td>
+        <td><%= proposal.status %></td>
+        <td><%= proposal.sunday %></td>
+        <td><%= proposal.monday %></td>
+        <td><%= proposal.tuesday %></td>
+        <td><%= proposal.wednesday %></td>
+        <td><%= proposal.thursday %></td>
+        <td><%= proposal.friday %></td>
+        <td><%= proposal.saturday %></td>
+        <td><%=l proposal.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_proposal_path(proposal), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      proposal_path(proposal),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_proposal_path,
+            :class => 'btn btn-primary' %>

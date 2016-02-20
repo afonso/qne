@@ -20,7 +20,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 pt-BR:
-  hello: "Hello world"
+  new: "novo"
+  standby: "pendente"
+  accepted: "aceito"
+  canceled: "cancelado"
+  finished: "concluido"
+  afternoon: "tarde"
+  morning: "manhã"
+  night: "noite"
   activerecord:
     errors:
       models:

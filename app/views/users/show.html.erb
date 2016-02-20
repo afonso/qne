@@ -1,4 +1,86 @@
-<%= link_to "editar", edit_user_registration_path %>
-<%= link_to "editar informações", information_edit_path %>
-<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-<%= image_tag current_user.avatar.normal %>
+<h2>
+  Demandas Que Criei <%= link_to "Criar nova", new_demand_path, :class => 'btn btn-primary btn-sm' %>
+</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Titulo</th>
+      <th>Periodo</th>
+      <th>Inicio em</th>
+      <th>Quantas vezes?</th>
+      <th>Status</th>
+      <th>Lugar</th>
+      <th>Criado em</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @demands.each do |demand| %>
+      <tr>
+        <td><%= link_to demand.id, demand_path(demand) %></td>
+        <td><%= demand.title %></td>
+        <td><%= I18n.t(demand.period) %></td>
+        <td><%= demand.start_at %></td>
+        <td><%= demand.how_many %></td>
+        <td><%= I18n.t(demand.status) %></td>
+        <td><%= demand.school.name %></td>
+        <td><%= demand.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_demand_path(demand), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      demand_path(demand),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Demandas Que Participo <%= link_to "Buscar", demands_path, :class => 'btn btn-primary btn-sm' %></h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Titulo</th>
+      <th>Periodo</th>
+      <th>Inicio em</th>
+      <th>Quantas vezes?</th>
+      <th>Status</th>
+      <th>Lugar</th>
+      <th>Criado em</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @groups.each do |g| %>
+      <tr>
+        <td><%= link_to g.demand.id, demand_path(g.demand) %></td>
+        <td><%= g.demand.title %></td>
+        <td><%= I18n.t(g.demand.period) %></td>
+        <td><%= g.demand.start_at %></td>
+        <td><%= g.demand.how_many %></td>
+        <td><%= I18n.t(g.demand.status) %></td>
+        <td><%= g.demand.school.name %></td>
+        <td><%= g.demand.created_at %></td>
+        <td>
+          <%= link_to "Sair",
+                      quit_demands_path(id: g.id),
+                      :method => :delete,
+                      :data => { :confirm => "Você tem certeza que quer sair?" },
+                      :class => 'btn btn-xs btn-danger' %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_demand_path(g.demand), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      demand_path(g.demand),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

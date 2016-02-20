@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160213182102) do
+ActiveRecord::Schema.define(version: 20160220045100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 20160213182102) do
     t.integer  "school_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.boolean  "sunday"
+    t.boolean  "monday"
+    t.boolean  "tuesday"
+    t.boolean  "wednesday"
+    t.boolean  "thursday"
+    t.boolean  "friday"
+    t.boolean  "saturday"
+    t.boolean  "other_place"
   end
 
   add_index "demands", ["school_id"], name: "index_demands_on_school_id", using: :btree
@@ -67,6 +75,24 @@ ActiveRecord::Schema.define(version: 20160213182102) do
   add_index "information", ["city_id"], name: "index_information_on_city_id", using: :btree
   add_index "information", ["state_id"], name: "index_information_on_state_id", using: :btree
   add_index "information", ["user_id"], name: "index_information_on_user_id", using: :btree
+
+  create_table "proposals", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "demand_id"
+    t.string   "status"
+    t.boolean  "sunday"
+    t.boolean  "monday"
+    t.boolean  "tuesday"
+    t.boolean  "wednesday"
+    t.boolean  "thursday"
+    t.boolean  "friday"
+    t.boolean  "saturday"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "proposals", ["demand_id"], name: "index_proposals_on_demand_id", using: :btree
+  add_index "proposals", ["user_id"], name: "index_proposals_on_user_id", using: :btree
 
   create_table "schools", force: :cascade do |t|
     t.string   "name"
@@ -123,6 +149,8 @@ ActiveRecord::Schema.define(version: 20160213182102) do
   add_foreign_key "information", "cities"
   add_foreign_key "information", "states"
   add_foreign_key "information", "users"
+  add_foreign_key "proposals", "demands"
+  add_foreign_key "proposals", "users"
   add_foreign_key "schools", "cities"
   add_foreign_key "schools", "states"
 end

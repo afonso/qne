@@ -5,11 +5,15 @@ Rails.application.routes.draw do
                                     omniauth_callbacks: 'users/omniauth_callbacks', 
                                     registrations: 'registrations',
                                     sessions: 'sessions'                             
-                                  }
+  }
 
+  resources :proposals
+  
   resources :demands do
     collection do
       get 'success'
+      get 'add'
+      delete 'quit'
     end
   end
 

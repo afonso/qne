@@ -1,0 +1,84 @@
+<%= form_for @proposal, :html => { :class => "form-horizontal proposal" } do |f| %>
+
+  <% if @proposal.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@proposal.errors.count, "error") %> prohibited this proposal from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @proposal.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <h3>Demanda</h3>
+    <% unless @proposal.new_record? %>
+    <%= f.hidden_field :demand_id %>
+    <% else %>
+    <%= f.hidden_field :demand_id, value: @demand.id %>
+    <% end %>
+    <h4><%= @demand.title %></h4>
+    
+    <p>Periodo: <%= I18n.t(@demand.period) %></p>
+    <p>Escola: <%= @demand.school.name %></p>
+    <p>Endereço: <%= @demand.school.address %></p>
+    <p>Criado por: <%= @demand.created_by.name %></p>
+
+  </div>
+  <div class="form-group">
+    <h3>Quantas aulas?</h3>
+      <%= f.text_field :how_many %>
+  </div>
+  <div class="form-group">
+    <h3>Quais dias da semana?</h3>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box :sunday %> Domingo
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box :monday %> Segunda
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box :tuesday %> Terça
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box :wednesday %> Quarta
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box :thursday %> Quinta
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box :friday %> Sexta
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box :saturday %> Sábado
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                proposals_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

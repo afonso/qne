@@ -4,7 +4,7 @@ class DemandsController < ApplicationController
   # GET /demands
   # GET /demands.json
   def index
-    @demands = Demand.all
+    @demands = Demand.where("created_by = ? or (status = 'accepted' or status = 'standby')", current_user.id)
   end
 
   # GET /demands/1
@@ -23,6 +23,29 @@ class DemandsController < ApplicationController
   def edit
     @schools = School.all
     @accepted_demands = Demand.where(status: "accepted").where.not(title: @demand.title)
+  end
+
+  def add
+    @group = Group.new(demand_id: params[:demand_id])
+    @group.user_id = current_user.id
+    respond_to do |format|
+      if @group.save
+        format.html { redirect_to success_demands_path, notice: 'Added to Demand was successfully.' }
+        format.json { render :show, status: :created, location: @demand }
+      else
+        format.html { render :new }
+        format.json { render json: @demand.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def quit
+    @group = Group.find(params[:id])
+    @group.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: 'Você saiu do demanda com sucesso' }
+      format.json { head :no_content }
+    end
   end
 
   # POST /demands
@@ -79,7 +102,11 @@ class DemandsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    def group_params
+      params.require(:group).permit(:demand_id, :user_id)
+    end
+    
     def demand_params
-      params.require(:demand).permit(:title_other, :title, :observation, :period, :start_at, :how_many, :status, :accepted_by, :created_by, :school_id)
+      params.require(:demand).permit(:other_place, :title_other, :title, :observation, :period, :start_at, :status, :accepted_by, :created_by, :school_id)
     end
 end
