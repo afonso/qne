@@ -33,6 +33,12 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def only_admin
+    if current_user.role != "admin"
+      redirect_to root_path
+    end
+  end
+
   protected
 
   def configure_permitted_parameters

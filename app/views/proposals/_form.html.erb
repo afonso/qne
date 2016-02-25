@@ -27,7 +27,6 @@
     <p>Periodo: <%= I18n.t(@demand.period) %></p>
     <p>Escola: <%= @demand.school.name %></p>
     <p>Endereço: <%= @demand.school.address %></p>
-    <p>Criado por: <%= @demand.owner.name %></p>
 
   </div>
   <div class="form-group">
@@ -73,10 +72,43 @@
     </div>
   </div>
 
+  <% if current_user.role == "admin" %>
+  <hr>
+    <div class="form-group">
+    <p>
+      <%= link_to "Administrar Demanda Referente",
+                edit_demand_path(@proposal.demand), :class => 'btn btn-default' %>
+    </p>
+    <h5>Dados do Voluntario</h5>
+    <p>Nome: <%= @proposal.user.name %></p>
+    <p>Email: <%= @proposal.user.email %></p>
+    <p>Trabalha em: <%= @proposal.user.information.work_at %></p>
+    <p>Profissão: <%= @proposal.user.information.occupation %></p>
+    <p>Onde Mora: <%= @proposal.user.information.city.name %> - <%= @proposal.user.information.state.name %></p>
+    </div>
+    <div class="form-group">
+    <%= f.label "Status", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <div class="checkbox">
+        <label>
+          <%= f.radio_button :status, 'accepted', inline: true , checked: true %> Aprovado
+        </label>
+        <label>
+          <%= f.radio_button :status, 'canceled', inline: true %> Cancelado
+        </label>
+        <label>
+          <%= f.radio_button :status, 'new', inline: true %> Novo/Standby
+        </label>
+      </div>
+    </div>
+    <%=f.error_span(:period) %>
+  </div>
+  <% end %>
+
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+      <%= f.submit "Enviar", :class => 'btn btn-primary' %>
+      <%= link_to "Cancelar",
                 proposals_path, :class => 'btn btn-default' %>
     </div>
   </div>

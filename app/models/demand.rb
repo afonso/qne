@@ -12,4 +12,12 @@ class Demand < ActiveRecord::Base
   def owner
     User.find(created_by)
   end
+
+  def in_group(user_id)
+    Group.where(["demand_id = ? and user_id = ?", id, user_id])
+  end
+
+  def helped_by(user_id)
+    Proposal.where(["demand_id = ? and user_id = ?", id, user_id])
+  end
 end

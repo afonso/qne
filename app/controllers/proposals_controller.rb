@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
   before_action :set_proposal, only: [:show, :edit, :update, :destroy]
-
+  before_action :only_admin, only: [:index]
   # GET /proposals
   # GET /proposals.json
   def index
@@ -10,6 +10,7 @@ class ProposalsController < ApplicationController
   # GET /proposals/1
   # GET /proposals/1.json
   def show
+    @demand = Demand.find(@proposal.demand_id)
   end
 
   # GET /proposals/new
@@ -20,6 +21,7 @@ class ProposalsController < ApplicationController
 
   # GET /proposals/1/edit
   def edit
+    @demand = Demand.find(@proposal.demand_id)
   end
 
   # POST /proposals
@@ -27,6 +29,7 @@ class ProposalsController < ApplicationController
   def create
     @proposal = Proposal.new(proposal_params)
     @proposal.user_id = current_user.id
+    @proposal.status = "new"
     respond_to do |format|
       if @proposal.save
         format.html { redirect_to @proposal, notice: 'Proposal was successfully created.' }
@@ -41,6 +44,7 @@ class ProposalsController < ApplicationController
   # PATCH/PUT /proposals/1
   # PATCH/PUT /proposals/1.json
   def update
+    @demand = Demand.find(@proposal.demand_id)
     respond_to do |format|
       if @proposal.update(proposal_params)
         format.html { redirect_to @proposal, notice: 'Proposal was successfully updated.' }
@@ -66,7 +70,6 @@ class ProposalsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_proposal
       @proposal = Proposal.find(params[:id])
-      @demand = Demand.find(params[:demand_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

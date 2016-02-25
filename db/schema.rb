@@ -31,20 +31,12 @@ ActiveRecord::Schema.define(version: 20160220045100) do
     t.string   "observation"
     t.string   "period"
     t.date     "start_at"
-    t.integer  "how_many"
     t.string   "status"
     t.integer  "accepted_by"
     t.integer  "created_by"
     t.integer  "school_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.boolean  "sunday"
-    t.boolean  "monday"
-    t.boolean  "tuesday"
-    t.boolean  "wednesday"
-    t.boolean  "thursday"
-    t.boolean  "friday"
-    t.boolean  "saturday"
     t.boolean  "other_place"
   end
 
@@ -87,6 +79,7 @@ ActiveRecord::Schema.define(version: 20160220045100) do
     t.boolean  "thursday"
     t.boolean  "friday"
     t.boolean  "saturday"
+    t.integer  "how_many"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

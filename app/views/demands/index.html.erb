@@ -11,8 +11,6 @@
       <th>Periodo</th>
       <th>Inicio em</th>
       <th>Status</th>
-      <th>Aceito por</th>
-      <th>Criado por</th>
       <th>Lugar</th>
       <th>Criado em</th>
       <th></th>
@@ -24,20 +22,27 @@
         <td><%= link_to demand.id, demand_path(demand) %></td>
         <td><%= demand.title %></td>
         <td><%= demand.observation %></td>
-        <td><%= demand.period %></td>
+        <td><%= I18n.t(demand.period) %></td>
         <td><%= demand.start_at %></td>
-        <td><%= demand.status %></td>
-        <td><%= demand.accepted_by %></td>
-        <td><%= demand.created_by %></td>
+        <td><%= I18n.t(demand.status) %></td>
         <td><%= demand.school.name %></td>
         <td><%= demand.created_at %></td>
         <td>
+          <% if current_user.role == "student" and demand.in_group(current_user.id).blank? %>
           <%= link_to "Participar",
                       add_demands_path(demand_id: demand.id),
                       :class => 'btn btn-xs btn-success' %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+          <%
+          end
+          if current_user.role == "volunteer" and demand.helped_by(current_user.id).blank?
+          %>
+          <%= link_to "Ajudar",
+                      new_proposal_path(demand_id: demand.id),
+                      :class => 'btn btn-xs btn-success' %>
+          <% end %>
+          <%#= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_demand_path(demand), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <%#= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       demand_path(demand),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
@@ -47,7 +52,8 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<% if current_user.role == "student" %>
+<%= link_to "Criar Nova",
             new_demand_path,
             :class => 'btn btn-primary' %>
+<% end %>

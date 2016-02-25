@@ -4,7 +4,11 @@ class DemandsController < ApplicationController
   # GET /demands
   # GET /demands.json
   def index
-    @demands = Demand.where("created_by = ? or (status = 'accepted' or status = 'standby')", current_user.id)
+    if current_user.role == "admin"
+      @demands = Demand.all
+    else
+      @demands = Demand.where("created_by = ? or (status = 'accepted' or status = 'standby')", current_user.id)
+    end
   end
 
   # GET /demands/1

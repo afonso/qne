@@ -70,7 +70,39 @@
     </div>
     <%=f.error_span(:other_place) %>
   </div>
-
+  <% if current_user.role == "admin" %>
+  <hr>
+    <div class="form-group">
+    <h5>Dados do Aluno</h5>
+    <p>Nome: <%= @demand.owner.name %></p>
+    <p>Email: <%= @demand.owner.email %></p>
+    <p>Escola: <%= @demand.owner.information.school %></p>
+    <p>Termina em: <%= @demand.owner.information.expected_finish %></p>
+    <p>Onde Mora: <%= @demand.owner.information.city.name %> - <%= @demand.owner.information.state.name %></p>
+    </div>
+    <div class="form-group">
+    <%= f.label "Status", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <div class="checkbox">
+        <label>
+          <%= f.radio_button :status, 'accepted', inline: true , checked: true %> Aprovado
+        </label>
+        <label>
+          <%= f.radio_button :status, 'canceled', inline: true %> Cancelado
+        </label>
+        <label>
+          <%= f.radio_button :status, 'new', inline: true %> Novo/Standby
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "Inicio em", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :start_at, :class => 'form-control' %>
+    </div>
+  </div>
+  <% end %>
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit "Enviar", :class => 'btn btn-primary' %>

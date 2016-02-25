@@ -6,5 +6,6 @@ class UsersController < ApplicationController
     @demands = Demand.where(created_by: current_user.id)
     @groups = Group.where(user_id: current_user.id)
     @proposals = Proposal.where(user_id: current_user.id)
+    @volunteereds = Demand.where(accepted_by: current_user.id)
   end
 end

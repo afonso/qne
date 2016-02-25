@@ -5,35 +5,23 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:demand_id) %></th>
-      <th><%= model_class.human_attribute_name(:status) %></th>
-      <th><%= model_class.human_attribute_name(:sunday) %></th>
-      <th><%= model_class.human_attribute_name(:monday) %></th>
-      <th><%= model_class.human_attribute_name(:tuesday) %></th>
-      <th><%= model_class.human_attribute_name(:wednesday) %></th>
-      <th><%= model_class.human_attribute_name(:thursday) %></th>
-      <th><%= model_class.human_attribute_name(:friday) %></th>
-      <th><%= model_class.human_attribute_name(:saturday) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th>#</th>
+      <th>Usuario</th>
+      <th>Demanda</th>
+      <th>Status</th>
+      <th>Dias</th>
+      <th>Criado em</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @proposals.each do |proposal| %>
       <tr>
         <td><%= link_to proposal.id, proposal_path(proposal) %></td>
-        <td><%= proposal.user_id %></td>
-        <td><%= proposal.demand_id %></td>
-        <td><%= proposal.status %></td>
-        <td><%= proposal.sunday %></td>
-        <td><%= proposal.monday %></td>
-        <td><%= proposal.tuesday %></td>
-        <td><%= proposal.wednesday %></td>
-        <td><%= proposal.thursday %></td>
-        <td><%= proposal.friday %></td>
-        <td><%= proposal.saturday %></td>
+        <td><%= proposal.user.name %></td>
+        <td><%= proposal.demand.title %></td>
+        <td><%= I18n.t(proposal.status) %></td>
+        <td><%= proposal.weekdays.join(", ") %></td>
         <td><%=l proposal.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
