@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20160220045100) do
     t.integer  "city_id"
     t.integer  "state_id"
     t.string   "school"
-    t.date     "expected_finish"
+    t.integer  "expected_finish"
     t.string   "work_at"
     t.string   "occupation"
     t.datetime "created_at",      null: false

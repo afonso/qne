@@ -26,7 +26,7 @@
   <div class="form-group">
     <%= f.label "Quando irá conluir o ensino médio?", :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :expected_finish, required: :true, :class => 'form-control' %>
+      <%= select_year(Date.today, start_year: 2016, end_year: 2030, field_name: :expected_finish, prefix: :information, html: {required: :true, class: 'form-control'}) %>
     </div>
     <%=f.error_span(:expected_finish) %>
   </div>
