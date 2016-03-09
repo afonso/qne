@@ -6,10 +6,7 @@ class LandingController < ApplicationController
     if current_user
       redirect_to user_path(current_user)
     end
-  end
-
-  def choose
-    
+    @schools = Demand.select('DISTINCT school_id')
   end
 
   def resource_name

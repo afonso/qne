@@ -22,5 +22,6 @@
 //= require gmaps-auto-complete
 //= require underscore
 //= require gmaps/google
+//= require autocomplete-rails
 //
 //= require_tree .

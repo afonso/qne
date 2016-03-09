@@ -20,4 +20,11 @@ class Demand < ActiveRecord::Base
   def helped_by(user_id)
     Proposal.where(["demand_id = ? and user_id = ?", id, user_id])
   end
+
+  def geo
+    g = Geokit::Geocoders::GoogleGeocoder.geocode(school.address + " - Brasil")
+    sch = School.find(school.id)
+    sch.update_attributes(:lati => g.lat, :longi => g.lng)
+    return g
+  end
 end

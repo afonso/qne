@@ -1,43 +1,5 @@
 <% if current_user.role == "student" %>
-<h2>
-  Demandas Que Criei <%= link_to "Criar nova", new_demand_path, :class => 'btn btn-primary btn-sm' %>
-</h2>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Titulo</th>
-      <th>Periodo</th>
-      <th>Inicio em</th>
-      <th>Status</th>
-      <th>Lugar</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @demands.each do |demand| %>
-      <tr>
-        <td><%= link_to demand.id, demand_path(demand) %></td>
-        <td><%= demand.title %></td>
-        <td><%= I18n.t(demand.period) %></td>
-        <td><%= demand.start_at %></td>
-        <td><%= I18n.t(demand.status) %></td>
-        <td><%= demand.school.name %></td>
-        <td>
-          <%= link_to "editar",
-                      edit_demand_path(demand), :class => 'btn btn-default btn-xs' %>
-          <%= link_to "apagar",
-                      demand_path(demand),
-                      :method => :delete,
-                      :data => { :confirm => "Você tem certeza?" },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<h2>Demandas Que Participo <%= link_to "Buscar", demands_path, :class => 'btn btn-primary btn-sm' %></h2>
+<h2>Pedidos <%= link_to "Buscar", demands_path, :class => 'btn btn-primary btn-sm' %> <%= link_to "Criar nova", new_demand_path, :class => 'btn btn-primary btn-sm' %></h2>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -60,6 +22,15 @@
         <td><%= I18n.t(g.demand.status) %></td>
         <td><%= g.demand.school.name %></td>
         <td>
+          <% if g.demand.created_by == current_user.id and g.demand.status == 'new' %>
+          <%= link_to "editar",
+                      edit_demand_path(g.demand), :class => 'btn btn-default btn-xs' %>
+          <%= link_to "apagar",
+                      demand_path(g.demand),
+                      :method => :delete,
+                      :data => { :confirm => "Você tem certeza?" },
+                      :class => 'btn btn-xs btn-danger' %>
+          <% end %>
           <%= link_to "Sair",
                       quit_demands_path(id: g.id),
                       :method => :delete,

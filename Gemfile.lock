@@ -81,6 +81,10 @@ GEM
       multipart-post (>= 1.2, < 3)
     font-awesome-rails (4.5.0.0)
       railties (>= 3.2, < 5.0)
+    geokit (1.10.0)
+    geokit-rails (2.1.0)
+      geokit (~> 1.5)
+      rails (>= 3.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     gmaps-autocomplete-rails (0.1.4)
@@ -182,6 +186,8 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
+    rails4-autocomplete (1.1.1)
+      rails (>= 3.0)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
@@ -257,6 +263,8 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   font-awesome-rails
+  geokit
+  geokit-rails
   gmaps-autocomplete-rails
   gmaps4rails
   jbuilder (~> 2.0)
@@ -276,6 +284,7 @@ DEPENDENCIES
   puma
   quiet_assets
   rails (= 4.2.5)
+  rails4-autocomplete
   rails_12factor
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

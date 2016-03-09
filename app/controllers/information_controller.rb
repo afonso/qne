@@ -1,6 +1,7 @@
 class InformationController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_finished_user_profile, except: :update_cities
+  autocomplete :school, :name, :full => true
   
   def new
     if current_user.infos_finished?
@@ -9,12 +10,14 @@ class InformationController < ApplicationController
     @information = Information.new
     @states = State.all
     @cities = City.where(state_id: State.first.id)
+    @schools = School.all
   end
   
   def edit
     @information = Information.find_by(user: current_user.id)
     @states = State.all
     @cities = City.where(state_id: @information.state.id)
+    @schools = School.all
   end
   
   def create
@@ -54,6 +57,6 @@ class InformationController < ApplicationController
 
   private
     def information_params
-      params.require(:information).permit(:city_id, :state_id, :school, :expected_finish, :work_at, :occupation)
+      params.require(:information).permit(:city_id, :state_id, :school_id, :school_name, :expected_finish, :work_at, :occupation)
     end
 end

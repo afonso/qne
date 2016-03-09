@@ -8,6 +8,14 @@
     Se preferir, faça o login ou o cadastro abaixo.
   </div>
   <div class="col-md-4">
+  <% @schools.each do |s| %>
+    <div class="escola">
+      <p>
+      <%= s.school.avatar.normal %>
+      <%= s.school.name %>
+      </p>
+    </div>
+  <% end %>
   </div>
 </div>
 <hr />

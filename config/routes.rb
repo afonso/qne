@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :information, only: [:new, :edit, :create, :update] do
     collection do
       get 'update_cities'
+      get :autocomplete_school_name
     end
   end
   

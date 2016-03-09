@@ -6,8 +6,10 @@ class DemandsController < ApplicationController
   def index
     if current_user.role == "admin"
       @demands = Demand.all
+      @udemands = Demand.all.uniq
     else
       @demands = Demand.where("created_by = ? or (status = 'accepted' or status = 'standby')", current_user.id)
+      @udemands = Demand.where("created_by = ? or (status = 'accepted' or status = 'standby')", current_user.id).uniq
     end
   end
 

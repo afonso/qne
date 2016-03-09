@@ -1,7 +1,31 @@
 <%- model_class = Demand -%>
-<div class="page-header">
-  <h1>Demandas</h1>
-</div>
+
+<script type="text/javascript">
+jQuery(function($){
+var handler = Gmaps.build('Google');
+handler.buildMap({ internal: {id: 'geolocation'}}, function(){
+  var markers = handler.addMarkers([
+    <% @udemands.each do |demand| %>
+      {
+        "lat": <%= demand.school.lati.blank? ? demand.geo.lat : demand.school.lati %>,
+        "lng": <%= demand.school.longi.blank? ? demand.geo.lng : demand.school.longi %>,
+        "picture": {
+          "url": "<%= image_url "qnemark.png"%>",
+          "width":  32,
+          "height": 32
+        },
+        "infowindow": '<%= j(demand.school.name) %><br><%= j(demand.school.address) %><br><%= link_to "Ver Pedidos", school_path(demand.school) %>'
+      },
+      <% end %>
+  ]);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+});
+</script>
+
+  <div id="geolocation" style="height: 30em" class="col-lg-12"></div>
+
 <table class="table table-striped">
   <thead>
     <tr>

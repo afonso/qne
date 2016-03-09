@@ -28,6 +28,9 @@ gem 'jquery-ui-rails'
 gem 'gmaps-autocomplete-rails'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem 'rails4-autocomplete'
+gem 'geokit'
+gem 'geokit-rails'
 
 group :development, :test do
   gem 'spring'

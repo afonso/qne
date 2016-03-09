@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160220045100) do
+ActiveRecord::Schema.define(version: 20160313130057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,15 +56,17 @@ ActiveRecord::Schema.define(version: 20160220045100) do
     t.integer  "user_id"
     t.integer  "city_id"
     t.integer  "state_id"
-    t.string   "school"
+    t.integer  "school_id"
     t.integer  "expected_finish"
     t.string   "work_at"
     t.string   "occupation"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "school_name"
   end
 
   add_index "information", ["city_id"], name: "index_information_on_city_id", using: :btree
+  add_index "information", ["school_id"], name: "index_information_on_school_id", using: :btree
   add_index "information", ["state_id"], name: "index_information_on_state_id", using: :btree
   add_index "information", ["user_id"], name: "index_information_on_user_id", using: :btree
 
@@ -98,6 +100,7 @@ ActiveRecord::Schema.define(version: 20160220045100) do
     t.string   "cep"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "avatar"
   end
 
   add_index "schools", ["city_id"], name: "index_schools_on_city_id", using: :btree
@@ -140,6 +143,7 @@ ActiveRecord::Schema.define(version: 20160220045100) do
   add_foreign_key "groups", "demands"
   add_foreign_key "groups", "users"
   add_foreign_key "information", "cities"
+  add_foreign_key "information", "schools"
   add_foreign_key "information", "states"
   add_foreign_key "information", "users"
   add_foreign_key "proposals", "demands"

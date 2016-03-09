@@ -1,6 +1,6 @@
 class SchoolsController < ApplicationController
   before_action :set_school, only: [:show, :edit, :update, :destroy]
-  before_action :only_admin
+  before_action :only_admin, except: [:show]
   # GET /schools
   # GET /schools.json
   def index
@@ -10,6 +10,7 @@ class SchoolsController < ApplicationController
   # GET /schools/1
   # GET /schools/1.json
   def show
+    @demands = Demand.where(school_id: @school.id).where.not(status: "new")
   end
 
   # GET /schools/new

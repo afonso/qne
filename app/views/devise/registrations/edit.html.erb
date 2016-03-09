@@ -9,19 +9,8 @@
         <small id="notification">Alterar avatar</small>
       </span>
     </div>
-    <div class="col-md-10">
-      <%= f.text_field :name, required: :true, hide_label: :true, placeholder: "Name" %>
-      <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
-      <%= f.text_field :birthday, required: :true, hide_label: :true, placeholder: "Data de nascimento" %>    
-    </div>
-    <div class="col-md-10 col-md-offset-2">
-      <%= f.form_group :gender, label: { text: "Sexo" } do %>
-        <%= f.radio_button :gender, 'male', label: "Masculino", inline: true %>
-        <%= f.radio_button :gender, 'female', label: "Feminino", inline: true %>
-      <% end %>
-    </div>
     <% unless current_user.role %>
-    <div class="col-md-10 col-md-offset-2">
+    <div class="col-md-10">
       <%= f.form_group :role, required: :true, label: { text: "Você é?" } do %>
         <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-default active">
@@ -41,8 +30,26 @@
           </label>
         </div>
         <% end %>
+        </div>
       <% end %>
+    <div class="col-md-10">
+      <%= f.text_field :name, required: :true, hide_label: :true, placeholder: "Name" %>
+      <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
+      <%= f.text_field :birthday, required: :true, hide_label: :true, placeholder: "Data de nascimento" %>    
     </div>
+    <script type="text/javascript">
+    jQuery(function($){
+      $( "#passchange" ).hide();
+      $( "#button" ).click(function() {
+        $( "#passchange" ).toggle( "fast" );
+      });
+    });
+    </script>
+    <div class="col-md-10 col-md-offset-2">
+    <div class="form-group">
+    <div id="button" class="btn btn-default btn-xs">Mudar senha</div>
+    </div>
+    <div id="passchange">
     <span>Se quiser mudar sua senha digite abaixo, deixe em branco para manter a atual.</span>
     <% if @validatable %>
       <%= f.password_field :password, autocomplete: "off", hide_label: :true, placeholder: "Senha", help: "Must be #{@minimum_password_length} characters minimum" %>
@@ -50,10 +57,13 @@
       <%= f.password_field :password, autocomplete: "off", hide_label: :true, placeholder: "Senha" %>
     <% end %>
     <%= f.password_field :password_confirmation, autocomplete: "off", hide_label: :true, placeholder: "Confirme" %>
+    </div>
     <%= f.hidden_field :avatar_cache %>
+
     <div class="form-group">
       <%= f.submit "Atualizar", class: "btn btn-success" %>
       <%= link_to "Cancelar", root_path, class: "btn btn-default" %>
+    </div>
     </div>
   </div>
 <% end %>

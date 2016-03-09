@@ -4,7 +4,7 @@ class CreateInformation < ActiveRecord::Migration
       t.references :user, index: true, foreign_key: true
       t.references :city, index: true, foreign_key: true
       t.references :state, index: true, foreign_key: true
-      t.string :school
+      t.references :school, index: true, foreign_key: true
       t.integer :expected_finish
       t.string :work_at
       t.string :occupation

@@ -12,14 +12,6 @@
       </span>
     </div>
     <div class="col-md-10">
-      <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
-      <% if @validatable %>
-      <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha", help: "Precisa ter no mínimo #{@minimum_password_length} caracteres" %>
-      <% else %>
-      <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha" %>
-      <% end %>
-      <%= f.password_field :password_confirmation, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Confirme sua senha" %>
-
       <%= f.form_group :role, required: :true, label: { text: "Você é?" } do %>
       <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-default active">
@@ -39,6 +31,13 @@
         </label>
       </div>
       <% end %>
+      <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
+      <% if @validatable %>
+      <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha", help: "Precisa ter no mínimo #{@minimum_password_length} caracteres" %>
+      <% else %>
+      <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha" %>
+      <% end %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Confirme sua senha" %>
     </div>
     <%= f.submit "Cadastrar", class: "btn btn-success pull-right" %>
   </div>

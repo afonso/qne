@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'net/http'
 require 'net/https' # for ruby 1.8.7
 require 'json'
@@ -35,4 +28,19 @@ module BRPopulate
   end
 end
 
+module SchoolPopulate
+  def self.schools
+    http = Net::HTTP.new('raw.githubusercontent.com', 443); http.use_ssl = true
+    JSON.parse http.get('/afonso/escolas/master/escolas.json').body
+  end
+
+  def self.populate
+    schools.each do |s|
+      school_obj = School.new(:name => s["nome"], :address => s["endereco"] + ", " + s["numero"])
+      school_obj.save
+    end
+  end
+end
+
+SchoolPopulate.populate
 BRPopulate.populate
