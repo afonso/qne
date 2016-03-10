@@ -26,7 +26,6 @@ class DemandsController < ApplicationController
     @accepted_demands = Demand.where(status: "accepted")
   end
 
-  # GET /demands/1/edit
   def edit
     @schools = School.all
     @accepted_demands = Demand.where(status: "accepted").where.not(title: @demand.title)
