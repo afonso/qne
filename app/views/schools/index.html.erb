@@ -2,14 +2,16 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+    <form class="form-search" action="">
+      <input type="text" name="starts_with" class="input-medium search-query">
+      <button type="submit" class="btn">Buscar</button>
+    </form>
 <table class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:address) %></th>
-      <th><%= model_class.human_attribute_name(:lati) %></th>
-      <th><%= model_class.human_attribute_name(:longi) %></th>
       <th><%= model_class.human_attribute_name(:state_id) %></th>
       <th><%= model_class.human_attribute_name(:city_id) %></th>
       <th><%= model_class.human_attribute_name(:neighborhood) %></th>
@@ -24,10 +26,8 @@
         <td><%= link_to school.id, school_path(school) %></td>
         <td><%= school.name %></td>
         <td><%= school.address %></td>
-        <td><%= school.lati %></td>
-        <td><%= school.longi %></td>
-        <td><%= school.state.name %></td>
-        <td><%= school.city.name %></td>
+        <td><%= school.state_id %></td>
+        <td><%= school.city_id %></td>
         <td><%= school.neighborhood %></td>
         <td><%= school.cep %></td>
         <td><%=l school.created_at %></td>

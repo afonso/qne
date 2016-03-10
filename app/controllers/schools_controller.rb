@@ -1,10 +1,12 @@
 class SchoolsController < ApplicationController
   before_action :set_school, only: [:show, :edit, :update, :destroy]
   before_action :only_admin, except: [:show]
+
   # GET /schools
   # GET /schools.json
   def index
-    @schools = School.all
+    @schools = []
+    @schools = School.starts_with(params[:starts_with]) if params[:starts_with].present?
   end
 
   # GET /schools/1
@@ -23,7 +25,7 @@ class SchoolsController < ApplicationController
   # GET /schools/1/edit
   def edit
     @states = State.all
-    @cities = City.where(state_id: @school.state.id)
+    @cities = City.where(state_id: @school.state.id) rescue City.where(state_id: State.first.id)
   end
 
   # POST /schools
@@ -81,6 +83,6 @@ class SchoolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def school_params
-      params.require(:school).permit(:name, :address, :lati, :longi, :state_id, :city_id, :neighborhood, :cep)
+      params.require(:school).permit(:name, :address, :lati, :longi, :state_id, :city_id, :neighborhood, :cep, :avatar)
     end
 end

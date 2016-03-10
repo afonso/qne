@@ -7,20 +7,22 @@
     <% end %>
     Se preferir, faça o login ou o cadastro abaixo.
   </div>
+</div>
+<div class="row">
   <div class="col-md-4">
   <% @schools.each do |s| %>
-    <div class="escola">
-      <p>
-      <%= s.school.avatar.normal %>
-      <%= s.school.name %>
-      </p>
+    <div class="col-md-1">
+      <a href="/schools/<%= s.school.id %>">
+      <%= image_tag s.school.avatar.big %>
+      <small><%= s.school.name %></small>
+      </a>
     </div>
   <% end %>
   </div>
 </div>
 <hr />
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-4" id="newuser">
   <h2>Login</h2>
     <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email", class: "input-lg" %>
