@@ -16,6 +16,7 @@ class DemandsController < ApplicationController
   # GET /demands/1
   # GET /demands/1.json
   def show
+    redirect_to root_path
   end
 
   # GET /demands/new
@@ -32,8 +33,20 @@ class DemandsController < ApplicationController
   end
 
   def add
-    @group = Group.new(demand_id: params[:demand_id])
-    @group.user_id = current_user.id
+    @demand_from = Demand.find(params[:demand_id])
+    if current_user.information.school.id == @demand_from.school.id
+      @group = Group.new(demand_id: params[:demand_id])
+      @group.user_id = current_user.id
+    else
+      @demand = @demand_from.dup
+      @demand.created_by = current_user.id
+      @demand.school_id = current_user.information.school.id
+      @demand.status = "new"
+      if @demand.save
+        @group = Group.new(demand_id: @demand.id)
+        @group.user_id = current_user.id
+      end
+    end
     respond_to do |format|
       if @group.save
         format.html { redirect_to success_demands_path, notice: 'Added to Demand was successfully.' }
@@ -95,7 +108,10 @@ class DemandsController < ApplicationController
   # DELETE /demands/1
   # DELETE /demands/1.json
   def destroy
-    @demand.destroy
+    @group = Group.where(demand_id: @demand.id).where(user_id: current_user.id).first
+    if @group.destroy
+      @demand.destroy
+    end
     respond_to do |format|
       format.html { redirect_to demands_url, notice: 'Demand was successfully destroyed.' }
       format.json { head :no_content }
