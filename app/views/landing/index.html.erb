@@ -10,13 +10,15 @@
 </div>
 <div class="row">
   <div class="col-md-4">
-  <% @schools.each do |s| %>
+  <% if @schools %>
+    <% @schools.each do |s| %>
     <div class="col-md-1">
       <a href="/schools/<%= s.school.id %>">
       <%= image_tag s.school.avatar.big %>
       <small><%= s.school.name %></small>
       </a>
     </div>
+    <% end %>
   <% end %>
   </div>
 </div>
