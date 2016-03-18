@@ -43,8 +43,8 @@
           <%= link_to "Ajudar",
                       new_proposal_path(demand_id: demand.id),
                       :class => 'btn btn-xs btn-success' %>
-          <% end
-          if current_user.role == "admin"  %>
+          <% end %>
+          <% if current_user.role == "admin" %> 
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_demand_path(demand), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

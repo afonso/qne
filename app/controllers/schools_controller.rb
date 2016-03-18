@@ -12,7 +12,11 @@ class SchoolsController < ApplicationController
   # GET /schools/1
   # GET /schools/1.json
   def show
-    @demands = Demand.where(school_id: @school.id).where.not(status: "new")
+    if current_user.role == "admin"
+      @demands = Demand.where(school_id: @school.id)
+    else
+      @demands = Demand.where(school_id: @school.id).where.not(status: "new").where("created_by = ?", current_user.id)
+    end
   end
 
   # GET /schools/new
