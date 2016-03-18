@@ -31,6 +31,7 @@ gem 'underscore-rails'
 gem 'rails4-autocomplete'
 gem 'geokit'
 gem 'geokit-rails'
+gem 'sort_alphabetical'
 
 group :development, :test do
   gem 'spring'

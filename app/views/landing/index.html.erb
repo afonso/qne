@@ -1,4 +1,27 @@
 <div class="row">
+  <div class="col-md-12 text-center">
+  <h3>
+    Aprenda o que você quiser
+    <small class="text-muted">A grade curricular da escola não pode atender a todos os seus interesses, mas o mundo pode.</small>
+  </h3>
+  <hr>
+  <p>Conectamos as pessoas à educação para valorizar a escola com a participação da comunidade, aproveitar o que a sociedade sabe e pode compartilhar e atender aos interesses dos alunos que vão além do currículo obrigatório.</p>
+  </div>
+</div>
+<div class="row well well-lg">
+  <% if @schools %>
+    <% @schools.each do |s| %>
+    <div class="col-md-3">
+      <a href="/schools/<%= s.school.id %>">
+      <%= image_tag s.school.avatar.big %>
+      <br />
+      <small><%= s.school.name %></small>
+      </a>
+    </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="row">
   <div class="col-md-4">
   </div>
   <div class="col-md-4">
@@ -6,20 +29,6 @@
       <%= fa_icon 'facebook' %> Entrar usando Facebook
     <% end %>
     Se preferir, faça o login ou o cadastro abaixo.
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-4">
-  <% if @schools %>
-    <% @schools.each do |s| %>
-    <div class="col-md-1">
-      <a href="/schools/<%= s.school.id %>">
-      <%= image_tag s.school.avatar.big %>
-      <small><%= s.school.name %></small>
-      </a>
-    </div>
-    <% end %>
-  <% end %>
   </div>
 </div>
 <hr />

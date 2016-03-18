@@ -1,3 +1,4 @@
+<% if current_user.role == "student" %>
 <ul class="nav nav-pills">
   <li>
     <a href="/">Meus Pedidos</a>
@@ -7,3 +8,16 @@
   <li><%= link_to "Atualizar Informações", information_edit_path %></li>
   <li><%= link_to "Sair", destroy_user_session_path, :method => :delete %></li>
 </ul>
+<% end %>
+
+<% if current_user.role == "volunteer" %>
+<ul class="nav nav-pills">
+  <li>
+    <a href="/">Minhas Propostas</a>
+  </li>
+  <li><a href="/demands">Buscar Pedidos</a></li>
+  <li><%= link_to "Atualizar Cadastro", edit_user_registration_path %></li>
+  <li><%= link_to "Atualizar Informações", information_edit_path %></li>
+  <li><%= link_to "Sair", destroy_user_session_path, :method => :delete %></li>
+</ul>
+<% end %>

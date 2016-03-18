@@ -76,7 +76,7 @@
   <hr>
     <div class="form-group">
     <p>
-      <%= link_to "Administrar Demanda Referente",
+      <%= link_to "Administrar Demanda Referente(IMPORTANTE (DES)APROVAR DEMANA ANTES)",
                 edit_demand_path(@proposal.demand), :class => 'btn btn-default' %>
     </p>
     <h5>Dados do Voluntario</h5>
@@ -84,6 +84,7 @@
     <p>Email: <%= @proposal.user.email %></p>
     <p>Trabalha em: <%= @proposal.user.information.work_at %></p>
     <p>Profissão: <%= @proposal.user.information.occupation %></p>
+    <p>Contato: <%= @proposal.user.information.phone %></p>
     <p>Onde Mora: <%= @proposal.user.information.city.name %> - <%= @proposal.user.information.state.name %></p>
     </div>
     <div class="form-group">

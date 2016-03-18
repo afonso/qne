@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  validates :role,
+            :presence => { :if => 'role.nil?' }
+
   def is_oauth?
     uid and provider ? true : false
   end

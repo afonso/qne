@@ -33,6 +33,8 @@ pt-BR:
       models:
         user:
           attributes:
+            role:
+              blank: "Você precisa escolher uma das opções acima."
             email:
               taken: "Este email já foi cadastrado"
             password_confirmation:

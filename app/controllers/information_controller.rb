@@ -8,15 +8,15 @@ class InformationController < ApplicationController
       redirect_to information_edit_path
     end
     @information = Information.new
-    @states = State.all
-    @cities = City.where(state_id: State.first.id)
+    @states = State.all.sort_alphabetical_by(&:name)
+    @cities = City.where(state_id: State.first.id).sort_alphabetical_by(&:name)
     @schools = School.all
   end
   
   def edit
     @information = Information.find_by(user: current_user.id)
-    @states = State.all
-    @cities = City.where(state_id: @information.state.id)
+    @states = State.all.sort_alphabetical_by(&:name)
+    @cities = City.where(state_id: @information.state.id).sort_alphabetical_by(&:name)
     @schools = School.all
   end
   
@@ -49,7 +49,7 @@ class InformationController < ApplicationController
   end
 
   def update_cities
-    @cities = City.where(state_id: params[:state_id])
+    @cities = City.where(state_id: params[:state_id]).sort_alphabetical_by(&:name)
     respond_to do |format|
       format.js
     end
@@ -57,6 +57,6 @@ class InformationController < ApplicationController
 
   private
     def information_params
-      params.require(:information).permit(:city_id, :state_id, :school_id, :school_name, :expected_finish, :work_at, :occupation)
+      params.require(:information).permit(:phone, :city_id, :state_id, :school_id, :school_name, :expected_finish, :work_at, :occupation)
     end
 end

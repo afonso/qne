@@ -49,6 +49,13 @@
   </div>
   <% end %>
   <div class="form-group">
+    <%= f.label "Telefone e/ou Celular", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :phone, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:phone) %>
+  </div>
+  <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit "Atualizar", class: "btn btn-success" %>
       <%= link_to "Cancelar", root_path, class: "btn btn-default" %>

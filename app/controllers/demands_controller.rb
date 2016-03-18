@@ -16,7 +16,9 @@ class DemandsController < ApplicationController
   # GET /demands/1
   # GET /demands/1.json
   def show
-    redirect_to root_path
+    unless current_user.role == "admin"
+      redirect_to root_path
+    end
   end
 
   # GET /demands/new

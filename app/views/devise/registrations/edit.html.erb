@@ -13,8 +13,8 @@
     <div class="col-md-10">
       <%= f.form_group :role, required: :true, label: { text: "Você é?" } do %>
         <div class="btn-group" data-toggle="buttons">
-          <label class="btn btn-default active">
-          <%= f.radio_button :role, 'student', inline: true , checked: true, autocomplete: "off" %>
+          <label class="btn btn-default">
+          <%= f.radio_button :role, 'student', inline: true, autocomplete: "off" %>
           <%= image_tag "student.png" %>
           Estudante
           </label>
