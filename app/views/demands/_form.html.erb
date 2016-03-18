@@ -75,7 +75,10 @@
     <h5>Dados do Aluno</h5>
     <p>Nome: <%= @demand.owner.name %></p>
     <p>Email: <%= @demand.owner.email %></p>
-    <p>Escola: <%= @demand.owner.information.school.name %> - <%= @demand.owner.information.school.address %></p>
+    <p>Escola: <%= @demand.owner.information.school.name %> - <%= @demand.owner.information.school.address %>
+    <%= link_to "Editar",
+              edit_school_path(@demand.owner.information.school), :class => 'btn btn-primary btn-xs' %>
+    </p>
     <p>Termina ensino médio em: <%= @demand.owner.information.expected_finish %></p>
     <p>Contato: <%= @demand.owner.information.phone %></p>
     <p>Onde Mora: <%= @demand.owner.information.city.name %> - <%= @demand.owner.information.state.name %></p>
