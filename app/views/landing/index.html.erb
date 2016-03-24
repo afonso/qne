@@ -22,12 +22,13 @@
   <% end %>
 </div>
 <div class="row">
-  <div class="col-md-4">
-  </div>
-  <div class="col-md-4">
-    <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-social btn-lg btn-facebook" do %>
-      <%= fa_icon 'facebook' %> Entrar usando Facebook
+  <div class="col-md-12">
+    <%= link_to user_omniauth_authorize_path(:facebook, role: "student"), class: "btn btn-social btn-lg btn-facebook" do %>
+      <%= fa_icon 'facebook' %> Entrar usando Facebook como Aluno
     <% end %>
+    <%= link_to user_omniauth_authorize_path(:facebook, role: "volunteer"), class: "btn btn-social btn-lg btn-facebook" do %>
+      <%= fa_icon 'facebook' %> Entrar usando Facebook como Voluntário
+    <% end %><br />
     Se preferir, faça o login ou o cadastro abaixo.
   </div>
 </div>

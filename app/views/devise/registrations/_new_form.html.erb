@@ -12,6 +12,9 @@
       </span>
     </div>
     <div class="col-md-10">
+      <% if params[:role] %>
+      <%= f.hidden_field :role, value: params[:role] %>
+      <% else %>
       <%= f.form_group :role, required: :true, label: { text: "Você é?" } do %>
       <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-default">
@@ -30,6 +33,7 @@
         Outros
         </label>
       </div>
+      <% end %>
       <% end %>
       <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
       <% if @validatable %>
