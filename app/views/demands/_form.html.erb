@@ -50,8 +50,12 @@
   <div class="form-group">
     <%= f.label "Onde?", :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
+      <% if @demand.new_record? %>
       <%= f.hidden_field :school_id, value: current_user.information.school_id %>
       <%= current_user.information.school_name %>
+      <% else %>
+      <%= @demand.school.name %>
+      <% end %>
     </div>
   </div>
 
