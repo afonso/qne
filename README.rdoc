@@ -1,10 +1,10 @@
 == Configurações
 
-Env Keys:
-DATABASE_URL:      postgres://...
-FB_APP_KEY:        1690861984464225
-FB_APP_SECRET:     4ff719f95fa773f4d77d9e2c251e36ee
+- Env Keys:
+-- DATABASE_URL:      postgres://...
+-- FB_APP_KEY:        1690861984464225
+-- FB_APP_SECRET:     4ff719f95fa773f4d77d9e2c251e36ee
 
 == Comandos após configuração
-$ rake db:migrate
-$ rake db:seed
+- $ rake db:migrate
+- $ rake db:seed
