@@ -32,7 +32,7 @@ class ProposalsController < ApplicationController
     @proposal.status = "new"
     respond_to do |format|
       if @proposal.save
-        format.html { redirect_to @proposal, notice: 'Proposal was successfully created.' }
+        format.html { redirect_to @proposal, notice: 'Proposta enviada com sucesso.' }
         format.json { render :show, status: :created, location: @proposal }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class ProposalsController < ApplicationController
     @demand = Demand.find(@proposal.demand_id)
     respond_to do |format|
       if @proposal.update(proposal_params)
-        format.html { redirect_to @proposal, notice: 'Proposal was successfully updated.' }
+        format.html { redirect_to @proposal, notice: 'Proposta atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @proposal }
       else
         format.html { render :edit }

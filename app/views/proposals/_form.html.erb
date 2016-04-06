@@ -16,7 +16,6 @@
   <% end %>
 
   <div class="form-group">
-    <h3>Demanda</h3>
     <% unless @proposal.new_record? %>
     <%= f.hidden_field :demand_id %>
     <% else %>
@@ -34,7 +33,7 @@
       <%= f.text_field :how_many %>
   </div>
   <div class="form-group">
-    <h3>Quais dias da semana?</h3>
+    <h3>Em que dias da semana você poderia?</h3>
     <div class="checkbox">
       <label>
         <%= f.check_box :sunday %> Domingo

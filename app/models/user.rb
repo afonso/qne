@@ -19,13 +19,13 @@ class User < ActiveRecord::Base
 
   def profile_finished?
     #require 'pry'; binding.pry
-    name and birthday and role ? true : false
+    name and role ? true : false
   end
 
   def infos_finished?
     if information
       if role == "student"
-        information.city or information.state or information.school or information.expected_finish ? true : false
+        information.city or information.state or information.school ? true : false
       else
         information.city or information.state ? true : false
       end

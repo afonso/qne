@@ -87,6 +87,7 @@
     <p>Contato: <%= @demand.owner.information.phone %></p>
     <p>Onde Mora: <%= @demand.owner.information.city.name %> - <%= @demand.owner.information.state.name %></p>
     </div>
+    <% unless @demand.status == "marked" %>
     <div class="form-group">
     <%= f.label "Status", :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
@@ -109,6 +110,11 @@
       <%= f.text_field :start_at, :class => 'form-control' %>
     </div>
   </div>
+  <% else %>
+  <div class="form-group">
+    <span class="well well-sm">Marcado para o dia <%= @demand.start_at %></span>
+  </div>
+  <% end %>
   <% end %>
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">

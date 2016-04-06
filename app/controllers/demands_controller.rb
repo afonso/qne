@@ -25,7 +25,7 @@ class DemandsController < ApplicationController
   def new
     @demand = Demand.new
     @schools = School.all
-    @accepted_demands = Demand.where(status: "accepted")
+    @accepted_demands = Demand.where(status: "accepted").select('distinct title')
   end
 
   def edit
@@ -43,6 +43,8 @@ class DemandsController < ApplicationController
       @demand.created_by = current_user.id
       @demand.school_id = current_user.information.school.id
       @demand.status = "new"
+      @demand.start_at = ""
+      @demand.created_at = Time.now
       if @demand.save
         @group = Group.new(demand_id: @demand.id)
         @group.user_id = current_user.id
@@ -50,7 +52,7 @@ class DemandsController < ApplicationController
     end
     respond_to do |format|
       if @group.save
-        format.html { redirect_to success_demands_path, notice: 'Added to Demand was successfully.' }
+        format.html { redirect_to success_demands_path, notice: 'Adicionado com sucesso.' }
         format.json { render :show, status: :created, location: @demand }
       else
         format.html { render :new }
@@ -82,7 +84,7 @@ class DemandsController < ApplicationController
         @group.user_id = @demand.created_by
         @group.save
         
-        format.html { redirect_to success_demands_path, notice: 'Demand was successfully created.' }
+        format.html { redirect_to success_demands_path, notice: 'Pedido enviado com sucesso.' }
         format.json { render :show, status: :created, location: @demand }
       else
         format.html { render :new }
@@ -94,10 +96,13 @@ class DemandsController < ApplicationController
   # PATCH/PUT /demands/1
   # PATCH/PUT /demands/1.json
   def update
+    unless params[:demand][:start_at].blank?
+      params[:demand][:status] = "marked"
+    end
     params[:demand][:title] = demand_params[:title_other] if demand_params[:title].blank?
     respond_to do |format|
       if @demand.update(demand_params)
-        format.html { redirect_to @demand, notice: 'Demand was successfully updated.' }
+        format.html { redirect_to @demand, notice: 'Pedido atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @demand }
       else
         format.html { render :edit }
@@ -114,7 +119,7 @@ class DemandsController < ApplicationController
       @demand.destroy
     end
     respond_to do |format|
-      format.html { redirect_to demands_url, notice: 'Demand was successfully destroyed.' }
+      format.html { redirect_to demands_url, notice: 'Pedido deletado com sucesso.' }
       format.json { head :no_content }
     end
   end

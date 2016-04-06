@@ -36,6 +36,9 @@ class InformationController < ApplicationController
 
   def update
     @information = Information.find_by(user: current_user.id)
+    @states = State.all.sort_alphabetical_by(&:name)
+    @cities = City.where(state_id: @information.state.id).sort_alphabetical_by(&:name)
+    @schools = School.all
 
     respond_to do |format|
       if @information.update(information_params)

@@ -25,6 +25,7 @@ pt-BR:
   accepted: "aceito"
   canceled: "cancelado"
   finished: "concluido"
+  marked: "marcado"
   afternoon: "tarde"
   morning: "manhã"
   night: "noite"
@@ -36,7 +37,7 @@ pt-BR:
             role:
               blank: "Você precisa escolher uma das opções acima."
             email:
-              taken: "Este email já foi cadastrado"
+              taken: "Este email já foi cadastrado, faça o login na página inicial."
             password_confirmation:
               confirmation: "A confirmação da senha não é igual a senha"
             current_password:

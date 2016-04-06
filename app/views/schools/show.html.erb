@@ -33,14 +33,14 @@
         <td>
         <% if current_user %>
           <% if current_user.role == "student" and demand.in_group(current_user.id).blank? %>
-          <%= link_to "Participar",
+          <%= link_to "Quero Participar",
                       add_demands_path(demand_id: demand.id),
                       :class => 'btn btn-xs btn-success' %>
           <%
           end
           if current_user.role == "volunteer" and demand.helped_by(current_user.id).blank?
           %>
-          <%= link_to "Ajudar",
+          <%= link_to "Posso Ajudar",
                       new_proposal_path(demand_id: demand.id),
                       :class => 'btn btn-xs btn-success' %>
           <% end %>
