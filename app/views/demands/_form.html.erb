@@ -1,7 +1,7 @@
 <%= form_for @demand, :html => { :class => "form-horizontal demand" } do |f| %>
 
   <div class="form-group">
-    <%= f.label "Quer aprender o que?", :class => 'control-label col-lg-2' %>
+    <%= f.label "O que você gostaria de aprender além do currículo da escola?", :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <% @accepted_demands.each do |demand| %>
         <label>
