@@ -40,6 +40,7 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry-stack_explorer'
   gem 'pry-byebug'
+  gem 'pry-rescue'
   gem 'quiet_assets'
   gem 'puma'
   gem 'awesome_print', require: 'ap'
