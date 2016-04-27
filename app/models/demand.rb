@@ -22,7 +22,7 @@ class Demand < ActiveRecord::Base
   end
 
   def geo
-    g = Geokit::Geocoders::GoogleGeocoder.geocode(school.address + ", " + school.neighborhood + ", " + school.city.name.titleize + ", " + school.state.name.titleize + " - " + school.cep + " - Brasil")
+    g = Geokit::Geocoders::GoogleGeocoder.geocode(school.address + ", " + school.city.name.titleize + ", " + school.state.name.titleize + ", " + school.cep + " - Brasil")
     sch = School.find(school.id)
     sch.update_attributes(:lati => g.lat, :longi => g.lng)
     return g

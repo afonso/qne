@@ -52,7 +52,7 @@ class DemandsController < ApplicationController
     end
     respond_to do |format|
       if @group.save
-        UserNotifier.send_add_email(current_user, @demand).deliver
+        UserNotifier.send_add_email(current_user, @demand).deliver_now
         format.html { redirect_to success_demands_path, notice: 'Adicionado com sucesso.' }
         format.json { render :show, status: :created, location: @demand }
       else
@@ -84,7 +84,7 @@ class DemandsController < ApplicationController
         @group = Group.new(demand_id: @demand.id)
         @group.user_id = @demand.created_by
         @group.save
-        UserNotifier.send_created_email(current_user, @demand).deliver
+        UserNotifier.send_created_email(current_user, @demand).deliver_now
         format.html { redirect_to success_demands_path, notice: 'Pedido enviado com sucesso.' }
         format.json { render :show, status: :created, location: @demand }
       else
