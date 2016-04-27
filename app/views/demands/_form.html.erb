@@ -54,7 +54,7 @@
       <%= f.hidden_field :school_id, value: current_user.information.school_id %>
       <%= current_user.information.school_name %>
       <% else %>
-      <%= @demand.school.name %>
+      <%= @demand.school.name %> - <%= @demand.school.address %>, <%= @demand.school.city.name %> - <%= @demand.school.state.name %>
       <% end %>
     </div>
   </div>

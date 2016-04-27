@@ -3,7 +3,7 @@
     <%= f.label "Estado", :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <%= f.select :state_id, options_for_select(@states.collect { |state|
-      [state.name.titleize, state.id] }, (current_user.information.state_id if current_user.information.state_id)), {}, { id: 'states_select', required: :true, class: 'form-control' } %>
+      [state.name.titleize, state.id] }, (current_user.information.state_id if current_user.information)), {}, { id: 'states_select', required: :true, class: 'form-control' } %>
     </div>
     <%=f.error_span(:state_id) %>
   </div>
@@ -11,7 +11,7 @@
     <%= f.label "Cidade", :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <%= f.select :city_id, options_for_select(@cities.collect { |city|
-      [city.name.titleize, city.id] }, (current_user.information.city_id if current_user.information.city_id)), {}, { id: 'cities_select', required: :true, class: 'form-control' } %>
+      [city.name.titleize, city.id] }, (current_user.information.city_id if current_user.information)), {}, { id: 'cities_select', required: :true, class: 'form-control' } %>
     </div>
     <%=f.error_span(:city_id) %>
   </div>

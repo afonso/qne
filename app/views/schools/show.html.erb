@@ -2,7 +2,7 @@
 
 <address>
   Escola: <strong><%= @school.name %></strong><br>
-  Endereço: <%= @school.address %>
+  Endereço: <%= @school.address %>, <%= @school.city.name.titleize %> - <%= @school.state.name.titleize %>
 </address>
 
 <table class="table table-striped">
