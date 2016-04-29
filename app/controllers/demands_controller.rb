@@ -103,17 +103,17 @@ class DemandsController < ApplicationController
     params[:demand][:title] = demand_params[:title_other] if demand_params[:title].blank?
     respond_to do |format|
       if @demand.update(demand_params)
-        if @demand.status == "approved" 
+        if @demand.status == "accepted" 
           @group = Group.where(demand_id: @demand.id)
           @group.each do |g| 
-            user = Users.find(g.user_id)
+            user = User.find(g.user_id)
             UserNotifier.send_approved_mail(user, @demand).deliver_now
           end
         end
-        if @demand.start_at > 1.day.ago
+        if @demand.status == "marked" 
           @group = Group.where(demand_id: @demand.id)
           @group.each do |g| 
-            user = Users.find(g.user_id)
+            user = User.find(g.user_id)
             UserNotifier.send_marked_mail(user, @demand).deliver_now
           end
         end
