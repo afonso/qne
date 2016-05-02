@@ -32,6 +32,8 @@ class ProposalsController < ApplicationController
     @proposal.status = "new"
     respond_to do |format|
       if @proposal.save
+        @demand = Demand.find(@proposal.demand_id)
+        UserNotifier.send_proposal_mail(current_user, @demand).deliver_now
         format.html { redirect_to @proposal, notice: 'Proposta enviada com sucesso.' }
         format.json { render :show, status: :created, location: @proposal }
       else
@@ -47,6 +49,10 @@ class ProposalsController < ApplicationController
     @demand = Demand.find(@proposal.demand_id)
     respond_to do |format|
       if @proposal.update(proposal_params)
+        if @proposal.status == "accepted"
+          user = User.find(@proposal.user_id)
+          UserNotifier.send_propo_approved_mail(user, @demand).deliver_now
+        end
         format.html { redirect_to @proposal, notice: 'Proposta atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @proposal }
       else

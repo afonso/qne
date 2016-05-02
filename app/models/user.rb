@@ -13,6 +13,13 @@ class User < ActiveRecord::Base
   validates :role,
             :presence => { :if => 'role.nil?' }
 
+  after_create :send_singup_mail
+
+  def send_singup_mail
+    UserNotifier.send_new_user_message(self).deliver
+  end
+
+
   def is_oauth?
     uid and provider ? true : false
   end
