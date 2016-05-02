@@ -1,0 +1,44 @@
+/* @font-face {
+    font-family: "Avenir Next Thin";
+    src: url("avenir-next-thin.eot?") format("eot"),
+         url("avenir-next-thin.woff") format("woff"),
+         url("avenir-next-thin.ttf") format("truetype")
+} */
+
+@font-face {
+    font-family: "Avenir Next Regular";
+    src: url("avenir-next-regular.eot?") format("eot"),
+         url("avenir-next-regular.woff") format("woff"),
+         url("avenir-next-regular.ttf") format("truetype")
+}
+
+
+@font-face {
+  font-family: 'Avenir Next Medium';
+  src: url('avenir-next-medium.eot?#iefix') format('embedded-opentype'),
+       url('avenir-next-medium.otf')  format('opentype'),
+	   url('avenir-next-medium.woff') format('woff'),
+       url('avenir-next-medium.ttf')  format('truetype'),
+       url('avenir-next-medium.svg#Avenir Next Medium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir Next Demi';
+  src: url('avenir-next-demi.eot?#iefix') format('embedded-opentype'),
+       url('avenir-next-demi.otf')  format('opentype'),
+	   url('avenir-next-demi.woff') format('woff'),
+       url('avenir-next-demi.ttf')  format('truetype'),
+       url('avenir-next-demi.svg#Avenir Next Demi') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: "Avenir Next Bold";
+    src: url("avenir-next-bold.eot?") format("eot"),
+         url("avenir-next-bold.woff") format("woff"),
+         url("avenir-next-bold.ttf") format("truetype"),
+         url("avenir-next-bold.svg") format("svg")
+}
