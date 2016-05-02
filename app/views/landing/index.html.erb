@@ -1,30 +1,105 @@
-<div class="row">
-  <div class="col-md-12 text-center">
-  <h3>
-    Aprenda o que você quiser
-    <small class="text-muted">A grade curricular da escola não pode atender a todos os seus interesses, mas o mundo pode.</small>
-  </h3>
-  <hr>
-  <p>Conectamos as pessoas à educação para valorizar a escola com a participação da comunidade, aproveitar o que a sociedade sabe e pode compartilhar e atender aos interesses dos alunos que vão além do currículo obrigatório.</p>
-  </div>
+
+<div class="home-banner" style="background-image: url(assets/banner.jpg)">
+    <div class="banner-inner container">
+        <h3 class="banner-title"><span class="text-large">Aprenda </span>o que você quiser</h3>
+        <p class="banner-text">A grade curricular da escola não pode atender<br> a todos os seus interesses, mas o mundo pode.</p>
+    </div>
 </div>
-<div class="row well well-lg">
-  <% if @schools %>
-    <% @schools.each do |s| %>
+
+<section id="what-do" class="section">
+    <div class="section-inner">
+        <h3 class="section-title">O que fazemos?</h3>
+        <p>Conectamos as pessoas à educação para valorizar a escola com a participação da comunidade, aproveitar o que a sociedade sabe e pode compartilhar e atender aos interesses dos alunos que vão além do currículo obrigatório.</p>
+    </div>
+</section>
+
+<div id="ultimos-pedidos" class="container">
+
+    <h3 class="section-title">Últimos pedidos</h3>
+
+  <div class="row list-demands">
+    <% if @schools %>
+      <% @schools.each do |s| %>
+      <div class="col-md-3">
+        <a class="list-item" href="/schools/<%= s.school.id %>">
+          <span class="pedido">Fotografia</span>
+          <span class="img">
+            <%= image_tag s.school.avatar.big %>
+          </span>
+          <span class="school-name"><%= s.school.name %></span>
+        </a>
+      </div>
+      <% end %>
+    <% end %>
+
+    <!-- remover -->
+
     <div class="col-md-3">
-      <a href="/schools/<%= s.school.id %>">
-      <%= image_tag s.school.avatar.big %>
-      <br />
-      <small><%= s.school.name %></small>
+      <a class="list-item" href="/schools/">
+        <span class="pedido">Fotografia</span>
+        <span class="img" style="background-image: url(assets/escola.jpg)"></span>
+        <span class="school-name">Escola Estadual Mario Lago <span class="school-local">Diadema - SP</span></span>
       </a>
     </div>
-    <% end %>
-  <% end %>
+
+    <div class="col-md-3">
+      <a class="list-item" href="/schools/">
+        <span class="pedido">Fotografia</span>
+        <span class="img" style="background-image: url(assets/escola.jpg)"></span>
+        <span class="school-name">Escola Estadual Mario Lago <span class="school-local">Diadema - SP</span></span>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a class="list-item" href="/schools/">
+        <span class="pedido">Fotografia</span>
+        <span class="img" style="background-image: url(assets/escola.jpg)"></span>
+        <span class="school-name">Escola Estadual Mario Lago <span class="school-local">Diadema - SP</span></span>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a class="list-item" href="/schools/">
+        <span class="pedido">Fotografia</span>
+        <span class="img" style="background-image: url(assets/escola.jpg)"></span>
+        <span class="school-name">Escola Estadual Mario Lago <span class="school-local">Diadema - SP</span></span>
+      </a>
+    </div>
+
+    <div class="col-md-3">
+      <a class="list-item" href="/schools/">
+        <span class="pedido">Fotografia</span>
+        <span class="img" style="background-image: url(assets/escola.jpg)"></span>
+        <span class="school-name">Escola Estadual Mario Lago <span class="school-local">Diadema - SP</span></span>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a class="list-item" href="/schools/">
+        <span class="pedido">Fotografia</span>
+        <span class="img" style="background-image: url(assets/escola.jpg)"></span>
+        <span class="school-name">Escola Estadual Mario Lago <span class="school-local">Diadema - SP</span></span>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a class="list-item" href="/schools/">
+        <span class="pedido">Fotografia</span>
+        <span class="img" style="background-image: url(assets/escola.jpg)"></span>
+        <span class="school-name">Escola Estadual Mario Lago <span class="school-local">Diadema - SP</span></span>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a class="list-item" href="/schools/">
+        <span class="pedido">Fotografia</span>
+        <span class="img" style="background-image: url(assets/escola.jpg)"></span>
+        <span class="school-name">Escola Estadual Mario Lago <span class="school-local">Diadema - SP</span></span>
+      </a>
+    </div>
+
+    <!-- remover -->
+
+  </div>
 </div>
-<div class="row">
-<div class="col-md-4">
-</div>
-  <div class="col-md-4">
+
+<div class="container-fluid center">
+  <div class="facebook-login">
     <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-social btn-lg btn-facebook" do %>
       <%= fa_icon 'facebook' %> Entrar usando Facebook
     <% end %>
@@ -32,21 +107,32 @@
     Se preferir, faça o login ou o cadastro abaixo.
   </div>
 </div>
-<hr />
-<div class="row">
-  <div class="col-md-4" id="newuser">
-  <h2>Login</h2>
-    <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email", class: "input-lg" %>
-      <%= f.password_field :password, required: :true, hide_label: :true, placeholder: "Password", class: "input-lg" %>
-      <%= f.check_box :remember_me, label: "Dispositivo pessoal?" %>
-      <%= f.submit "Entrar" %>
-      <%= link_to "Esqueceu sua senha?", new_password_path(:user) %>
-    <% end %>
-  </div>
 
-  <div class="col-md-8">
-  <h2>Cadastro</h2>
-    <%= render partial: 'devise/registrations/new_form' %>
-  </div>
+
+<div class="container">
+    <div class="row">
+        <div id="home-signin" class="home-form col-md-6">
+            <div class="form-inner">
+                <h2 class="title">Cadastro</h2>
+
+                <%= render partial: 'devise/registrations/new_form' %>
+            </div>
+        </div>
+
+        <div class="col-md-6 home-form" id="home-login">
+            <div class="form-inner">
+                <h2 class="title">Login</h2>
+                <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                    <div class="inputs">
+                    <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email", class: "input-lg" %>
+                    <%= f.password_field :password, required: :true, hide_label: :true, placeholder: "Password", class: "input-lg" %>
+                    </div>
+                    <%= f.check_box :remember_me, label: "Manter logado" %>
+
+                    <%= f.submit "Entrar", class: "btn-submit"%>
+                    <%= link_to "Esqueceu sua senha?", new_password_path(:user), class: "forgot-pass" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
 </div>

@@ -18,6 +18,9 @@
 @import "bootstrap";
 @import "bootstrap-social";
 @import "font-awesome";
+@import "mixins.scss";
+@import "fonts.scss";
+@import "utils.scss";
 
 .btn-file {
     position: relative;
@@ -62,7 +65,7 @@ h2 {
 
 .menu-imaged {
     height: 300px;
-    background: asset-data-url("topo.jpg") no-repeat center center; 
+    background: asset-data-url("topo.jpg") no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -93,7 +96,47 @@ h2 {
 }
 
 #gmaps-canvas {
-    width: 300px; 
-    height: 300px;  
+    width: 300px;
+    height: 300px;
     border: solid 1px;
 }
+
+// header
+#header {
+    height: 100px;
+}
+#logo {
+    height: 70px;
+    margin-top: 15px;
+    float: left;
+    img {
+        max-height: 100%;
+    }
+}
+#main-nav {
+    margin-top: 60px;
+    li {
+        border-left: 1px solid #28a8fb;
+        &:first-child {
+            border: 0;
+        }
+    }
+    .link {
+        font-size: 13px;
+        padding-top: 0;
+        padding-bottom: 0;
+        color: #28a8fb;
+        font-family: $av-bold;
+        text-transform: uppercase;
+        &:hover {
+            background: none;
+            color: $dark-blue;
+        }
+    }
+}
+
+
+
+/* Css Views */
+
+@import "views/home.scss";

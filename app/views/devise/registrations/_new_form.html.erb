@@ -1,6 +1,6 @@
 <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:multipart => true}) do |f| %>
-  <div class="row">
-    <div class="col-md-2">
+
+    <!-- <div class="col-md-2">
       <span class="btn btn-file">
         <% if current_user %>
           <%= image_tag current_user.avatar.normal, class: "avatar-thumb img-thumbnail" %>
@@ -9,40 +9,44 @@
         <% end %>
         <%= f.file_field :avatar, hide_label: true %>
         <small id="notification">Alterar avatar</small>
-      </span>
-    </div>
-    <div class="col-md-10">
-      <% if params[:role] %>
-      <%= f.hidden_field :role, value: params[:role] %>
-      <% else %>
-      <%= f.form_group :role, required: :true, label: { text: "Você é?" } do %>
-      <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-default">
-        <%= f.radio_button :role, 'student', inline: true, autocomplete: "off" %>
-        <%= image_tag "student.png" %>
-        Estudante
-        </label>
-        <label class="btn btn-default">
-        <%= f.radio_button :role, 'volunteer', inline: true, autocomplete: "off" %>
-        <%= image_tag "volunteer.png" %>
-        Voluntário
-        </label>
-        <label class="btn btn-default">
-        <%= f.radio_button :role, 'other', inline: true, autocomplete: "off" %>
-        <%= image_tag "other.png" %>
-        Outros
-        </label>
-      </div>
-      <% end %>
-      <% end %>
-      <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
-      <% if @validatable %>
-      <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha", help: "Precisa ter no mínimo #{@minimum_password_length} caracteres" %>
-      <% else %>
-      <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha" %>
-      <% end %>
-      <%= f.password_field :password_confirmation, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Confirme sua senha" %>
-    </div>
-    <%= f.submit "Cadastrar", class: "btn btn-success pull-right" %>
-  </div>
-<% end %>
+    </span>
+    </div>-->
+
+
+        <div class="inputs">
+            <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
+            <% if @validatable %>
+            <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha", help: "Precisa ter no mínimo #{@minimum_password_length} caracteres" %>
+            <% else %>
+            <%= f.password_field :password, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Senha" %>
+            <% end %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", required: :true, hide_label: :true, placeholder: "Confirme sua senha" %>
+        </div>
+        <div class="user-type">
+            <% if params[:role] %>
+                <%= f.hidden_field :role, value: params[:role] %>
+            <% else %>
+                <%= f.form_group :role, required: :true, label: { text: "Você é?" } do %>
+                <div class="btn-group" data-toggle="buttons">
+                  <label class="btn btn-radio">
+                  <%= f.radio_button :role, 'student', inline: true, autocomplete: "off" %>
+                  Estudante
+                  </label>
+
+                  <label class="btn btn-radio">
+                  <%= f.radio_button :role, 'volunteer', inline: true, autocomplete: "off" %>
+                  Voluntário
+                  </label>
+
+                  <label class="btn btn-radio">
+                  <%= f.radio_button :role, 'other', inline: true, autocomplete: "off" %>
+                  Outros
+                  </label>
+                </div>
+                <% end %>
+            <% end %>
+        </div>
+
+        <%= f.submit "Cadastrar", class: "btn btn-submit" %>
+
+    <% end %>

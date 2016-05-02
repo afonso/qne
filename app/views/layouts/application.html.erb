@@ -38,45 +38,51 @@
     <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
   </head>
   <body>
-    <div class="container">
-      <div class="row menu-imaged img-rounded">
-        <div class="col-lg-12">
-          <a href="/">
-            <%= image_tag "logo-mini-qne.png", class: "img-responsive" %>
-          </a>
+
+    <div id="header-wrapper" class="container-fluid">
+      <div class="container">
+
+        <div class="row">
+          <div class="top-user-nav">
+            <%= render :partial => 'layouts/user_menu' if current_user %>
+          </div> <!-- menu atualizar perfil, atualizar informacoes, loggout -->
         </div>
-        <div class="col-lg-12">
-          <ul class="list-inline pull-right">
-            <li>
-              <%= render :partial => 'layouts/user_menu' if current_user %>
-            </li>
-            <li>
-              <a href="#" class="btn btn-default">Blog</a>
-            </li>
+
+        <header id="header" class="container-fluid">
+          <a href="/" id="logo">
+            <%= image_tag "logo-qne-h.png"%>
+          </a>   <!-- logo -->
+
+          <ul id="main-nav" class="nav navbar-nav navbar-right navbar-collapse collapse">
+              <li><a href="#" class="link">Pedidos</a></li>
+              <li><a href="#" class="link">Voluntário</a></li>
+              <li><a href="#" class="link">Aluno</a></li>
+              <li><a href="#" class="link">Sobre</a></li>
+              <li><a href="#" class="link">Contato</a></li>
+              <li><a href="#" class="link">Blog</a></li>
           </ul>
-        </div>
+
+        </header>
       </div>
-      <div class="row">
-        <div class="col-lg-12">
-        <%= render :partial => 'layouts/user_sub_menu' if current_user %>
-        
-          <%= bootstrap_flash %>
-          <%= yield %>
-        </div>
-        <!--
-        <div class="col-lg-3">
-          <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
+    </div>
+
+    <div class="container-fuid">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <%= render :partial => 'layouts/user_sub_menu' if current_user %>
+            </div>
           </div>
-        </div>/span-->
-      </div><!--/row-->
+        </div> <!-- current User Sub Menu -->
+
+        <!-- conteudo da página -->
+          <%= bootstrap_flash %>
+
+          <%= yield %>
+
+
     </div> <!-- /container -->
+
     <div class="navbar navbar-default navbar-bottom">
       <div class="container">
         <p class="navbar-text pull-left">&copy; 2016 - Quero na Escola
@@ -84,7 +90,7 @@
              <a href="#" class="navbar-btn btn-default btn btn-xs">Termo de Uso</a>
              <a href="#" class="navbar-btn btn-default btn btn-xs">Fale Conosco</a>
         </p>
-        
+
         <p class="navbar-text pull-right">
           <a href="#" class="navbar-btn btn-default btn btn-xs">
             Quem Somos?
