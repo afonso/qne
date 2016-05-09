@@ -21,3 +21,12 @@
   <li><%= link_to "Sair", destroy_user_session_path, :method => :delete %></li>
 </ul>
 <% end %>
+
+<% if current_user.role == "admin" %>
+<ul class="nav nav-pills">
+  <li><a href="/proposals">Propostas</a></li>
+  <li><a href="/demands">Pedidos</a></li>
+  <li><a href="/schools">Escolas</a></li>
+  <li><%= link_to "Sair", destroy_user_session_path, :method => :delete %></li>
+</ul>
+<% end %>
