@@ -64,10 +64,15 @@
     p {
         font-size: 21px;
         font-style: italic;
-        color: #565656;
+        color: #616161;
         line-height: 1.5;
         margin-bottom: 0;
-        font-family: Times, serif;
+        font-family: "Times New Roman", serif;
+        font-style: italic;;
+        font-weight: 300;
+
+        -moz-font-rendering: grayscale;
+        -webkit-font-rendering: antialised;
     }
 }
 
