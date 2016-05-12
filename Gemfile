@@ -32,6 +32,8 @@ gem 'rails4-autocomplete'
 gem 'geokit'
 gem 'geokit-rails'
 gem 'sort_alphabetical'
+gem 'mail_form'
+gem 'simple_form'
 
 group :development, :test do
   gem 'spring'

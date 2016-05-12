@@ -35,7 +35,7 @@ pt-BR:
         user:
           attributes:
             role:
-              blank: "Você precisa escolher uma das opções acima."
+              blank: "Você precisa escolher o tipo de usuário."
             email:
               taken: "Este email já foi cadastrado, faça o login na página inicial."
             password_confirmation:

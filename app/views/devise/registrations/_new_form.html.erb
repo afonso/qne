@@ -26,20 +26,20 @@
             <% if params[:role] %>
                 <%= f.hidden_field :role, value: params[:role] %>
             <% else %>
-                <%= f.form_group :role, required: :true, label: { text: "Você é?" } do %>
+                <%= f.form_group :role, label: { text: "Você é?" } do %>
                 <div class="btn-group" data-toggle="buttons">
                   <label class="btn btn-radio">
-                  <%= f.radio_button :role, 'student', inline: true, autocomplete: "off" %>
+                  <%= f.radio_button :role, 'student', inline: true, autocomplete: "off", required: :true %>
                   Estudante
                   </label>
 
                   <label class="btn btn-radio">
-                  <%= f.radio_button :role, 'volunteer', inline: true, autocomplete: "off" %>
+                  <%= f.radio_button :role, 'volunteer', inline: true, autocomplete: "off", required: :true %>
                   Voluntário
                   </label>
 
                   <label class="btn btn-radio">
-                  <%= f.radio_button :role, 'other', inline: true, autocomplete: "off" %>
+                  <%= f.radio_button :role, 'other', inline: true, autocomplete: "off", required: :true %>
                   Outros
                   </label>
                 </div>
