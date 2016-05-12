@@ -1,4 +1,4 @@
-<h2>Editar</h2>
+<h2>Editar dados</h2>
 
 <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:multipart => true}) do |f| %>
   <div class="row">
@@ -35,7 +35,7 @@
     <div class="col-md-10">
       <%= f.text_field :name, required: :true, hide_label: :true, placeholder: "Nome Completo" %>
       <%= f.email_field :email, required: :true, hide_label: :true, placeholder: "Email" %>
-      <%= f.text_field :birthday, hide_label: :true, placeholder: "Data de nascimento" %>    
+      <%= f.text_field :birthday, hide_label: :true, placeholder: "Data de nascimento" %>
     </div>
     <%= f.hidden_field :avatar_cache %>
     <div class="col-md-2">
@@ -48,4 +48,7 @@
   </div>
 <% end %>
 
-<%= button_to "Cancelar minha conta!", registration_path(resource_name), data: { confirm: "Tem certeza que deseja cancelar sua conta?" }, method: :delete, class: "btn btn-danger btn-xs pull-right" %>
+<div class="container">
+<h2>Minha conta</h2>
+<%= button_to "Cancelar minha conta!", registration_path(resource_name), data: { confirm: "Tem certeza que deseja cancelar sua conta?" }, method: :delete, class: "btn btn-danger btn-xs" %>
+</div>

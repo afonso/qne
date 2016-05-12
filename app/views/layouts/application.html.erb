@@ -37,8 +37,12 @@
     <script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
     <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
   </head>
-  <body>
 
+  <% if current_page?('/') %>
+  <body class="homepage">
+  <% else %>
+  <body class="internal">
+  <% end%>
     <div id="header-wrapper" class="container-fluid">
       <div class="container">
 
@@ -67,6 +71,8 @@
     </div>
 
     <div class="container-fuid">
+
+
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
@@ -76,9 +82,18 @@
         </div> <!-- current User Sub Menu -->
 
         <!-- conteudo da página -->
+
+        <% if !current_page?('/') %>
+        <div class="container">
+        <% end %>
+
           <%= bootstrap_flash %>
 
           <%= yield %>
+
+        <% if !current_page?('/') %>
+        </div>
+        <% end %>
 
 
     </div> <!-- /container -->
