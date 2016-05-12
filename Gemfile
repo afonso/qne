@@ -46,6 +46,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'puma'
   gem 'awesome_print', require: 'ap'
+  gem 'rails_real_favicon'
 end
 
 group :production do
