@@ -34,6 +34,7 @@ gem 'geokit-rails'
 gem 'sort_alphabetical'
 gem 'mail_form'
 gem 'simple_form'
+gem 'kaminari'
 
 group :development, :test do
   gem 'spring'

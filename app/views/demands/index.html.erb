@@ -81,7 +81,6 @@ handler.buildMap({ internal: {id: 'geolocation'}}, function(){
   </tbody>
 </table>
 <% if current_user.role == "student" %>
-<%= link_to "Criar Nova",
-            new_demand_path,
-            :class => 'btn btn-primary' %>
+  <%= link_to "Fazer um Pedido", new_demand_path, :class => 'btn btn-primary btn-sm' %>
 <% end %>
+<%= paginate @demands %>

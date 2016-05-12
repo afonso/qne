@@ -1,17 +1,32 @@
-<div align="center">
   <h3>Fale Conosco</h3>
 
-  <%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
-    <%= f.input :name, :required => true %>
-    <%= f.input :email, :required => true %>
-    <%= f.input :message, :as => :text, :required => true %>
-    <div class= "hidden">
-      <%= f.input :nickname, :hint => 'Deixe vazio.' %>
+<%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <%= f.label "Nome", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :name, :class => 'form-control' %>
     </div>
-    <div>
-      </br>
-      <%= f.button :submit, 'Enviar', :class=> "btn btn-primary" %>
+    <%=f.error_span(:name) %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Email", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :email, :class => 'form-control' %>
     </div>
-  <% end %>
-</div>
+    <%=f.error_span(:email) %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Mensagem", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_area :message, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:message) %>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit "Enviar", class: "btn btn-success" %>
+      <%= link_to "Cancelar", root_path, class: "btn btn-default" %>
+    </div>
+  </div>
 
+<% end %>
