@@ -6,7 +6,7 @@ class LandingController < ApplicationController
     if current_user
       redirect_to user_path(current_user)
     end
-    @schools = Demand.select('DISTINCT school_id').where.not(status: "new")
+    @schools = Demand.select('DISTINCT school_id, title').where.not(status: "new")
   end
 
   def resource_name
