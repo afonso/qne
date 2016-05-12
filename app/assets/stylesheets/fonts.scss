@@ -7,22 +7,22 @@
 
 @font-face {
     font-family: "Avenir Next Thin";
-    src: font-url('AvenirNextThin.eot');
-	src: font-url('AvenirNextThin.eot?#iefix') format('embedded-opentype'),
-		font-url('AvenirNextThin.woff2') format('woff2'),
-		font-url('AvenirNextThin.woff') format('woff'),
-		font-url('AvenirNextThin.ttf') format('truetype');
+    src: font-url( asset-path('AvenirNextThin.eot'));
+	src: font-url( asset-path('AvenirNextThin.eot?#iefix')) format('embedded-opentype'),
+		font-url( asset-path('AvenirNextThin.woff2')) format('woff2'),
+		font-url( asset-path('AvenirNextThin.woff')) format('woff'),
+		font-url( asset-path('AvenirNextThin.ttf')) format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
     font-family: "Avenir Next Regular";
-    src: font-url('AvenirNextRegular.eot');
-	src: font-url('AvenirNextRegular.eot?#iefix') format('embedded-opentype'),
-		font-url('AvenirNextRegular.woff2') format('woff2'),
-		font-url('AvenirNextRegular.woff') format('woff'),
-		font-url('AvenirNextRegular.ttf') format('truetype');
+    src: font-url( asset-path('AvenirNextRegular.eot'));
+	src: font-url( asset-path('AvenirNextRegular.eot?#iefix')) format('embedded-opentype'),
+		font-url( asset-path('AvenirNextRegular.woff2')) format('woff2'),
+		font-url( asset-path('AvenirNextRegular.woff')) format('woff'),
+		font-url( asset-path('AvenirNextRegular.ttf')) format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -30,41 +30,41 @@
 
 @font-face {
 	font-family: 'Avenir Next Medium';
-	src: font-url('AvenirNextMedium.eot');
-	src: font-url('AvenirNextMedium.eot?#iefix') format('embedded-opentype'),
-		font-url('AvenirNextMedium.woff2') format('woff2'),
-		font-url('AvenirNextMedium.woff') format('woff'),
-		font-url('AvenirNextMedium.ttf') format('truetype');
+	src: font-url( asset-path('AvenirNextMedium.eot'));
+	src: font-url( asset-path('AvenirNextMedium.eot?#iefix')) format('embedded-opentype'),
+		font-url( asset-path('AvenirNextMedium.woff2')) format('woff2'),
+		font-url( asset-path('AvenirNextMedium.woff')) format('woff'),
+		font-url( asset-path('AvenirNextMedium.ttf')) format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Avenir Next Demi';
-	src: font-url('AvenirNextDemi.eot');
-	src: font-url('AvenirNextDemi.eot?#iefix') format('embedded-opentype'),
-		font-url('AvenirNextDemi.woff2') format('woff2'),
-		font-url('AvenirNextDemi.woff') format('woff'),
-		font-url('AvenirNextDemi.ttf') format('truetype');
+	src: font-url( asset-path('AvenirNextDemi.eot'));
+	src: font-url( asset-path('AvenirNextDemi.eot?#iefix')) format('embedded-opentype'),
+		font-url( asset-path('AvenirNextDemi.woff2')) format('woff2'),
+		font-url( asset-path('AvenirNextDemi.woff')) format('woff'),
+		font-url( asset-path('AvenirNextDemi.ttf')) format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
     font-family: "Avenir Next Bold";
-    src: url("avenir-next-bold.eot?") format("eot"),
-         url("avenir-next-bold.woff") format("woff"),
-         url("avenir-next-bold.ttf") format("truetype"),
-         url("avenir-next-bold.svg") format("svg")
+    src: font-url( asset-path("avenir-next-bold.eot?")) format("eot"),
+         font-url( asset-path("avenir-next-bold.woff")) format("woff"),
+         font-url( asset-path("avenir-next-bold.ttf")) format("truetype"),
+         font-url( asset-path("avenir-next-bold.svg")) format("svg")
 }
 
 @font-face {
 	font-family: 'Times italic';
-	src: font-url('times-italic-webfont.eot');
-	src: font-url('times-italic-webfont.eot?#iefix') format('embedded-opentype'),
-		font-url('times-italic-webfont.woff2') format('woff2'),
-		font-url('times-italic-webfont.woff') format('woff'),
-		font-url('times-italic-webfont.ttf') format('truetype');
+	src: font-url( asset-path('times-italic-webfont.eot'));
+	src: font-url( asset-path('times-italic-webfont.eot?#iefix')) format('embedded-opentype'),
+		font-url( asset-path('times-italic-webfont.woff2')) format('woff2'),
+		font-url( asset-path('times-italic-webfont.woff')) format('woff'),
+		font-url( asset-path('times-italic-webfont.ttf')) format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
