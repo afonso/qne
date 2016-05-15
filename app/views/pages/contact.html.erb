@@ -1,0 +1,32 @@
+  <h3>Fale Conosco</h3>
+
+<%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <%= f.label "Nome", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:name) %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Email", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :email, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:email) %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Mensagem", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_area :message, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:message) %>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit "Enviar", class: "btn btn-success" %>
+      <%= link_to "Cancelar", root_path, class: "btn btn-default" %>
+    </div>
+  </div>
+
+<% end %>

@@ -4,12 +4,16 @@ class DemandsController < ApplicationController
   # GET /demands
   # GET /demands.json
   def index
-    if current_user.role == "admin"
-      @demands = Demand.all
-      @udemands = Demand.all.uniq
+    if current_user
+      if current_user.role == "admin"
+        @demands = Demand.all.page params[:page]
+        @udemands = Demand.all.uniq
+      else
+        @demands = Demand.where("created_by = ? or (status = 'accepted' or status = 'standby')", current_user.id).page params[:page]
+        @udemands = Demand.where("created_by = ? or (status = 'accepted' or status = 'standby')", current_user.id).uniq
+      end
     else
-      @demands = Demand.where("created_by = ? or (status = 'accepted' or status = 'standby')", current_user.id)
-      @udemands = Demand.where("created_by = ? or (status = 'accepted' or status = 'standby')", current_user.id).uniq
+      redirect_to root_path
     end
   end
 

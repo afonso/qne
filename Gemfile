@@ -32,6 +32,9 @@ gem 'rails4-autocomplete'
 gem 'geokit'
 gem 'geokit-rails'
 gem 'sort_alphabetical'
+gem 'mail_form'
+gem 'simple_form'
+gem 'kaminari'
 
 group :development, :test do
   gem 'spring'
@@ -44,6 +47,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'puma'
   gem 'awesome_print', require: 'ap'
+  gem 'rails_real_favicon'
 end
 
 group :production do

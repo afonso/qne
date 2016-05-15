@@ -1,5 +1,5 @@
 
-<div class="home-banner" style="background-image: url(assets/banner.jpg)">
+<div class="home-banner">
     <div class="banner-inner container">
         <h3 class="banner-title"><span class="text-large">Aprenda </span>o que você quiser</h3>
         <p class="banner-text">A grade curricular da escola não pode atender<br> a todos os seus interesses, mas o mundo pode.</p>
@@ -22,7 +22,7 @@
       <% @schools.each do |s| %>
       <div class="col-md-3">
         <a class="list-item" href="/schools/<%= s.school.id %>">
-          <span class="pedido">Fotografia</span>
+          <span class="pedido"><%= s.title.humanize %></span>
           <span class="img">
             <%= image_tag s.school.avatar.big %>
           </span>
@@ -32,73 +32,11 @@
       <% end %>
     <% end %>
 
-    <!-- remover -->
-
-    <div class="col-md-3">
-      <a class="list-item" href="/schools/">
-        <span class="pedido">Fotografia</span>
-        <span class="img" style="background-image: url(assets/escola.jpg)"></span>
-        <span class="school-name">Escola Estadual Mario Lago <span class="school-local">Diadema - SP</span></span>
-      </a>
-    </div>
-
-    <div class="col-md-3">
-      <a class="list-item" href="/schools/">
-        <span class="pedido">Fotografia</span>
-        <span class="img" style="background-image: url(assets/escola.jpg)"></span>
-        <span class="school-name">Escola Estadual Mario Lago <span class="school-local">Diadema - SP</span></span>
-      </a>
-    </div>
-    <div class="col-md-3">
-      <a class="list-item" href="/schools/">
-        <span class="pedido">Fotografia</span>
-        <span class="img" style="background-image: url(assets/escola.jpg)"></span>
-        <span class="school-name">Escola Estadual Mario Lago <span class="school-local">Diadema - SP</span></span>
-      </a>
-    </div>
-    <div class="col-md-3">
-      <a class="list-item" href="/schools/">
-        <span class="pedido">Fotografia</span>
-        <span class="img" style="background-image: url(assets/escola.jpg)"></span>
-        <span class="school-name">Escola Estadual Mario Lago <span class="school-local">Diadema - SP</span></span>
-      </a>
-    </div>
-
-    <div class="col-md-3">
-      <a class="list-item" href="/schools/">
-        <span class="pedido">Fotografia</span>
-        <span class="img" style="background-image: url(assets/escola.jpg)"></span>
-        <span class="school-name">Escola Estadual Mario Lago <span class="school-local">Diadema - SP</span></span>
-      </a>
-    </div>
-    <div class="col-md-3">
-      <a class="list-item" href="/schools/">
-        <span class="pedido">Fotografia</span>
-        <span class="img" style="background-image: url(assets/escola.jpg)"></span>
-        <span class="school-name">Escola Estadual Mario Lago <span class="school-local">Diadema - SP</span></span>
-      </a>
-    </div>
-    <div class="col-md-3">
-      <a class="list-item" href="/schools/">
-        <span class="pedido">Fotografia</span>
-        <span class="img" style="background-image: url(assets/escola.jpg)"></span>
-        <span class="school-name">Escola Estadual Mario Lago <span class="school-local">Diadema - SP</span></span>
-      </a>
-    </div>
-    <div class="col-md-3">
-      <a class="list-item" href="/schools/">
-        <span class="pedido">Fotografia</span>
-        <span class="img" style="background-image: url(assets/escola.jpg)"></span>
-        <span class="school-name">Escola Estadual Mario Lago <span class="school-local">Diadema - SP</span></span>
-      </a>
-    </div>
-
-    <!-- remover -->
-
   </div>
 </div>
 
 <div class="container-fluid center">
+  <a name="newuser"></a>
   <div class="facebook-login">
     <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-social btn-lg btn-facebook" do %>
       <%= fa_icon 'facebook' %> Entrar usando Facebook

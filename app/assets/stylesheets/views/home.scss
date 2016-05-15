@@ -12,6 +12,7 @@
     background-size: cover;
     background-position: center center;
     height: 620px;
+    background-image: image-url('banner.jpg');
 
     .banner-inner {
         height: 100%;
@@ -262,4 +263,8 @@
     .btn-submit {
         color: #00a2a5;
     }
+}
+
+.form-horizontal .form-group {
+    margin-left: 10px !important;
 }

@@ -6,10 +6,9 @@ var handler = Gmaps.build('Google');
 handler.buildMap({ internal: {id: 'geolocation'}}, function(){
   var markers = handler.addMarkers([
     <% @udemands.each do |demand| %>
-    <% if demand.school.lati and demand.school.longi %>
       {
-        "lat": <%= demand.school.lati.blank? ? demand.geo.lat : demand.school.lati %>,
-        "lng": <%= demand.school.longi.blank? ? demand.geo.lng : demand.school.longi %>,
+        "lat": <%= demand.geo['lat'] %>,
+        "lng": <%= demand.geo['lng'] %>,
         "picture": {
           "url": "<%= image_url "qnemark.png"%>",
           "width":  32,
@@ -17,7 +16,6 @@ handler.buildMap({ internal: {id: 'geolocation'}}, function(){
         },
         "infowindow": '<%= j(demand.school.name) %><br><%= j(demand.school.address) %><br><%= link_to "Ver Pedidos", school_path(demand.school) %>'
       },
-      <% end %>
       <% end %>
   ]);
   handler.bounds.extendWith(markers);
@@ -83,7 +81,6 @@ handler.buildMap({ internal: {id: 'geolocation'}}, function(){
   </tbody>
 </table>
 <% if current_user.role == "student" %>
-<%= link_to "Criar Nova",
-            new_demand_path,
-            :class => 'btn btn-primary' %>
+  <%= link_to "Fazer um Pedido", new_demand_path, :class => 'btn btn-primary btn-sm' %>
 <% end %>
+<%= paginate @demands %>

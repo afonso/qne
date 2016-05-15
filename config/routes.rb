@@ -35,6 +35,10 @@ Rails.application.routes.draw do
       get :autocomplete_school_name
     end
   end
+
+  resources "contacts", only: [:create]
+
+  get "/pages/:page" => "pages#show"
   
   match 'information/edit' => 'information#edit', via: :get
   match 'schools/:id/update_cities' => 'schools#update_cities', via: :get
