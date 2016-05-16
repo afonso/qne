@@ -26,6 +26,19 @@ body {
     font-family: $av-regular;
 }
 
+.internal {
+    #header-wrapper {
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 40px;
+    }
+}
+
+#header-wrapper {
+    .container {
+        position: relative;
+    }
+}
+
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -119,10 +132,15 @@ h2 {
 }
 #main-nav {
     margin-top: 60px;
+    padding-right : 0;
     li {
         border-left: 1px solid #28a8fb;
         &:first-child {
             border: 0;
+        }
+
+        &:last-child .link {
+            padding-right: 0;
         }
     }
     .link {
@@ -137,6 +155,27 @@ h2 {
             color: $dark-blue;
         }
     }
+}
+
+.top-user-nav {
+    font-size: 13px;
+    position: absolute;
+    top:13px;
+    right: 30px;
+
+    .dropdown {
+        padding-right: 0;
+    }
+
+    .dropdown-toggle {
+        color: #999;
+    }
+
+    .dropdown-menu {
+        left: auto;
+        right: 0;
+    }
+
 }
 
 
