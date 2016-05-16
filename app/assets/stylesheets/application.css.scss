@@ -144,3 +144,9 @@ h2 {
 /* Css Views */
 
 @import "views/home.scss";
+
+@media (max-width: 1024px) {
+   #geolocation {
+     display: none;
+   }
+ }
