@@ -131,6 +131,7 @@
 
 .facebook-login {
     width: 400px;
+    max-width: 100%;
     margin: 55px auto 85px;
     text-align: center;
 }
@@ -267,4 +268,209 @@
 
 .form-horizontal .form-group {
     margin-left: 10px !important;
+}
+
+@media screen and (max-width: 1280px) {
+
+    .home-banner {
+        height: 450px;
+
+        .banner-title {
+            margin-top: 120px;
+        }
+    }
+
+}
+
+
+@media screen and (max-width: 1180px) {
+
+    .home-banner {
+        height: 400px;
+
+        .banner-title {
+            margin-top: 90px;
+            font-size: 40px;
+        }
+
+        .text-large {
+            font-size: 69px;
+        }
+
+        .banner-text {
+            font-size: 24px;
+        }
+    }
+
+}
+
+
+@media screen and (max-width: 840px) {
+
+    .home-banner {
+        height: 350px;
+
+        .banner-title {
+            margin-top: 80px;
+            font-size: 35px;
+        }
+
+        .text-large {
+            font-size: 60px;
+        }
+
+        .banner-text {
+            font-size: 22px;
+        }
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    .home-banner {
+        height: 300px;
+
+        .banner-title {
+            margin-top: 45px;
+            font-size: 28px;
+        }
+
+        .text-large {
+            font-size: 40px;
+        }
+
+        .banner-text {
+            font-size: 18px;
+            br {
+                display: none;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    #header-wrapper {
+        .container {
+            padding-left: 0;
+        }
+    }
+
+    #header {
+        height: 80px;
+    }
+
+    #logo {
+        height: 50px;
+    }
+
+    .home-banner {
+        .banner-title {
+            margin-top: 70px;
+        }
+    }
+
+    #what-do {
+        padding: 15px 12px 25px;
+
+        .section-title {
+            margin: 0.7em 0;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
+
+    #ultimos-pedidos {
+        .section-title {
+            margin-top: 2em;
+        }
+    }
+
+    .facebook-login {
+        margin: 35px 0 50px;
+        .btn-social {
+            padding-left: 48px;
+            font-size: 1.2em;
+        }
+
+        .fa.facebook {
+            width: 33px;
+            line-height: 42px;
+            font-size: 1.2em;
+        }
+
+        p {
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    }
+
+    .home-form {
+        height: auto;
+        padding: 25px 15px;
+
+        .title {
+            margin-top: 0;
+        }
+
+        .form-inner {
+            width: auto;
+            margin: 0;
+            max-width: 100%;
+
+        }
+    }
+
+    #home-signin {
+        .inputs,
+        .user-type
+        {
+            width: 100%;
+            margin: 0;
+        }
+
+        .user-type {
+            border: 0;
+            padding-top: 10px;
+            padding-left: 0;
+        }
+
+        .btn-group {
+            display: block;
+        }
+
+        .btn-radio {
+            float: none;
+            display: block;
+            text-align: left;
+            margin-left: 10px;
+        }
+
+        .btn-submit {
+            display: block;
+            margin: 0 auto;
+            width: 147px;
+        }
+    }
+
+    #home-login {
+        .inputs {
+            width: 100%;
+            margin: 0;
+        }
+
+        .checkbox {
+            margin-top: 0;
+        }
+
+        .btn-submit {
+            display: block;
+            margin: 5px auto 25px;
+            width: 118px;
+        }
+    }
 }
