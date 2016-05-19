@@ -184,8 +184,9 @@ h2 {
 
 @import "views/home.scss";
 
-@media (max-width: 1024px) {
-   #geolocation {
-     display: none;
-   }
- }
+@media screen and (max-width: 1024px) {
+  #geolocation {
+    visibility: hidden;
+    display: none;
+  }
+}
